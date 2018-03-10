@@ -1,0 +1,62 @@
+#! /bin/sh
+#
+# configure
+#
+# Configuration script for JXXRS
+#
+# Invoke configure --help for help.
+#
+
+showhelp()
+{
+cat << ENDHELP
+usage: configure {options}
+Configure the JXXRS C++ Library.
+
+Options:
+  --help
+    Display this help screen.
+
+  --prefix=<install_prefix>
+    Use the given install directory for make install.
+    Default is /usr/local.
+
+  --jxxrs-impl=<impl>
+    Either "poco" or "jsoncpp".
+    Default is "poco".
+
+  --build-type=<cmake-build-type>
+    Examples: "Release", "Debug".
+    Default is "Release".
+ENDHELP
+}
+
+build_type=Release
+# parse arguments
+while [ $# -ge 1 ]; do
+	case "$1" in
+	--prefix=*)
+		prefix="`echo ${1} | awk '{print substr($0,10)}'`" ;;
+
+	--build-type=*)
+		build_type"`echo ${1} | awk '{print substr($0,14)}'`" ;;
+
+	--help)
+		showhelp
+		exit 0
+		;;
+
+	*)
+		showhelp
+		exit 1
+		;;
+	esac
+
+ 	shift
+done
+
+if [ -z "$prefix" ] ; then
+	prefix=/usr/local
+fi
+
+mkdir -p build && (cd build && cmake .. -DCMAKE_INSTALL_PREFIX="${prefix}" -DCMAKE_BUILD_TYPE="${build_type}") && echo "Configured"
