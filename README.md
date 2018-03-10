@@ -54,4 +54,4 @@ Free Software, licensed under the [Boost Software License](https://spdx.org/lice
 
 ## Why is it named "JXXON"?
 
-Phonetical overlay of "CXX", the make utility macro for C++, and "JXX-RS".
+Phonetical overlay of "CXX", the make utility macro for C++, and "JAX-RS".
