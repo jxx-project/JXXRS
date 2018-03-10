@@ -1,6 +1,6 @@
 # JXXON - A C++ REST client library
 
-Build JSON REST clients [JAX-RS](https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services) way.
+Build JSON REST clients the [JAX-RS](https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services) way.
 
 ## Overview
 
