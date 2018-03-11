@@ -4,7 +4,7 @@ Build JSON REST clients the [JAX-RS](https://en.wikipedia.org/wiki/Java_API_for_
 
 ## Overview
 
-JXXRS provides a subset of the JAX-RS client specification and an inplementation based on Poco and [JXXON](https://github.com/jxx-project/JXXON).
+JXXRS provides a subset of the JAX-RS client specification and an inplementation based on [Poco](https://pocoproject.org) and [JXXON](https://github.com/jxx-project/JXXON).
 
 ## How to use
 
