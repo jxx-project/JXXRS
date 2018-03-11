@@ -19,7 +19,8 @@ struct AbstractClientBuilderImpl;
 
 struct AbstractClientBuilder
 {
-	virtual ~AbstractClientBuilder() {
+	virtual ~AbstractClientBuilder()
+	{
 	}
 	
 	virtual void connectionPoolSize(std::size_t size) = 0;

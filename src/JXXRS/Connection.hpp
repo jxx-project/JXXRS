@@ -18,7 +18,8 @@ namespace JXXRS {
 
 struct Connection
 {
-	~Connection() {
+	virtual ~Connection()
+	{
 	}
 
 	virtual std::ostream& sendRequest(std::unique_ptr<Request> request) = 0;
