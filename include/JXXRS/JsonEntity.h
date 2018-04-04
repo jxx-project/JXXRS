@@ -8,37 +8,35 @@
 #ifndef JXXRS_JsonEntity_INCLUDED
 #define JXXRS_JsonEntity_INCLUDED
 
-#include "JXXRS/Entity.hpp"
-#include "JXXON/Serializable.hpp"
+#include "JXXRS/Entity.h"
+#include <JXXON/Serializable.h>
 #include <ostream>
 #include <string>
 
 namespace JXXRS {
 
-struct JsonEntity : public Entity
+class JsonEntity : public Entity
 {
-	
+public:
 	JsonEntity();
 	JsonEntity(const JsonEntity& other) = delete;
 	JsonEntity(JsonEntity&& other) = delete;
 	JsonEntity& operator=(const JsonEntity& other) = delete;
 	JsonEntity& operator=(JsonEntity&& other) = delete;
 	virtual ~JsonEntity();
-	
+
 	virtual const std::string& getMediaType() const override;
 
 protected:
-	
 	virtual void writeStream(std::ostream& out) const override;
-	
+
 private:
-	
 	JsonEntity(JXXON::Json&& json, const std::string& mediaType);
 
 	JXXON::Json entity;
 	const std::string& mediaType;
 
-	friend struct Entity;
+	friend class Entity;
 };
 
 } // namespace JXXRS

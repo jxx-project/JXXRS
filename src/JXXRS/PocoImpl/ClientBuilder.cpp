@@ -5,10 +5,10 @@
 //
 
 
-#include "JXXRS/ClientBuilder.hpp"
-#include "JXXRS/PocoImpl/BasicConnectionFactory.hpp"
-#include "JXXRS/PocoImpl/PoolingConnectionFactory.hpp"
-#include "JXXRS/PocoImpl/Client.hpp"
+#include "JXXRS/PocoImpl/ClientBuilder.h"
+#include "JXXRS/Error.h"
+#include "JXXRS/PocoImpl/BasicConnectionFactory.h"
+#include "JXXRS/PocoImpl/Client.h"
 #include <Poco/Crypto/PKCS12Container.h>
 #include <Poco/Crypto/RSAKey.h>
 
@@ -16,141 +16,132 @@ namespace JXXRS {
 namespace PocoImpl {
 
 ClientBuilder::ClientBuilder() :
-		clientConnectionPoolSize(0),
-		httpProxyURI(""),
-		noProxyPattern(""),
-		clientSSLProtocol(ClientBuilder::TLSV1_2),
-		clientSSLCiphers(""),
-		clientSSLVerify(true),
-		clientSSLVerificationDepth(9),
-		clientSSLTrustStore(""),
-		clientSSLDefaultCAs(false),
-		clientSSLKeyStore(""),
-		clientSSLKeyPassword("")
+		connectionFactory(nullptr),
+		httpProxy(""),
+		httpNoProxy(""),
+		tlsUsage(Poco::Net::Context::Usage::TLSV1_2_CLIENT_USE),
+		tlsCiphers("ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH"),
+		tlsVerify(true),
+		tlsVerificationDepth(9),
+		tlsTrustStore(""),
+		tlsUseDefaultCAs(false),
+		tlsKeyStore(""),
+		tlsKeyPassword(""),
+		configuration(nullptr)
 {
 }
 
-void ClientBuilder::connectionPoolSize(std::size_t size)
+void ClientBuilder::property(const std::string& name, std::shared_ptr<JXXRS::Configuration::Object>&& value)
 {
-	clientConnectionPoolSize = size;
-}
-	
-void ClientBuilder::httpProxy(const std::string& uri)
-{
-	httpProxyURI = uri;
-}
-	
-void ClientBuilder::noProxy(std::string& pattern)
-{
-	noProxyPattern = pattern;
-}
-	
-void ClientBuilder::sslProtocol(Protocol protocol)
-{
-	clientSSLProtocol = protocol;
-}
-	
-void ClientBuilder::sslCiphers(const std::string& cipherList)
-{
-	clientSSLCiphers = cipherList;
-}
-	
-void ClientBuilder::sslVerify(bool verify)
-{
-	clientSSLVerify = verify;
-}
-	
-void ClientBuilder::sslVerificationDepth(int depth)
-{
-	clientSSLVerificationDepth = depth;
-}
-	
-void ClientBuilder::sslTrustStore(const std::string& pemFile)
-{
-	clientSSLTrustStore = pemFile;
-}
-	
-void ClientBuilder::sslDefaultCAs(bool useDefaultCAs)
-{
-	clientSSLDefaultCAs = useDefaultCAs;
-}
-	
-void ClientBuilder::sslKeyStore(const std::string& pkcs12File, const std::string& password)
-{
-	clientSSLKeyStore = pkcs12File;
-	clientSSLKeyPassword = password;
-}
-
-std::shared_ptr<Client> ClientBuilder::build()
-{
-	Poco::Net::HTTPClientSession::ProxyConfig proxyConfig;
-	
-									 
-	std::shared_ptr<ConnectionFactory> connectionFactory;
-	if (clientConnectionPoolSize) {
-		sslContext->enableSessionCache(true);
-		connectionFactory = std::shared_ptr<JXXRS::PocoImpl::PoolingConnectionFactory>(
-			new JXXRS::PocoImpl::PoolingConnectionFactory(
-				createSSLContext(), createProxyConfig(), clientConnectionPoolSize, true));
+	if (name == "connectionFactory") {
+		connectionFactory = std::dynamic_pointer_cast<JXXRS::ConnectionFactory>(value);
 	} else {
-		sslContext->disableStatelessSessionResumption();
-		connectionFactory = std::shared_ptr<JXXRS::PocoImpl::BasicConnectionFactory>(
-			new JXXRS::PocoImpl::BasicConnectionFactory(
-				createSSLContext(), createProxyConfig()));
+		throw JXXRS::Error("JXXRS::PocoImpl::ClientBuilder: Unknown JXXRS::Configuration::Object property " + name);
 	}
-	return std::shared_ptr<JXXRS::PocoImpl::Client>(new JXXRS::PocoImpl::Client(connectionFactory));
+	configuration = nullptr;
 }
-	
+
+void ClientBuilder::property(const std::string& name, const std::string& value)
+{
+	if (name == "HTTP::proxy") {
+		httpProxy = Poco::URI(value);
+	} else if (name == "HTTP::noProxy") {
+		httpNoProxy = value;
+	} else if (name == "TLS::protocol") {
+		if (value == "TLSv1") {
+			tlsUsage = Poco::Net::Context::Usage::TLSV1_CLIENT_USE;
+		} else if (value == "TLSv1.1") {
+			tlsUsage = Poco::Net::Context::Usage::TLSV1_1_CLIENT_USE;
+		} else if (value == "TLSv1.2") {
+			tlsUsage = Poco::Net::Context::Usage::TLSV1_2_CLIENT_USE;
+		} else {
+			throw JXXRS::Error("JXXRS::PocoImpl::ClientBuilder: Unknown TLS::protocol " + value);
+		}
+	} else if (name == "TLS::ciphers") {
+		tlsCiphers = value;
+	} else if (name == "TLS::trustStore") {
+		tlsTrustStore = value;
+	} else if (name == "TLS::keyStore") {
+		tlsKeyStore = value;
+	} else if (name == "TLS:keyPassword") {
+		tlsKeyPassword = value;
+	} else {
+		throw JXXRS::Error("JXXRS::PocoImpl::ClientBuilder: Unknown std::string property " + name);
+	}
+	configuration = nullptr;
+}
+
+void ClientBuilder::property(const std::string& name, int value)
+{
+	if (name == "TLS::verificationDepth") {
+		tlsVerificationDepth = value;
+	} else if (name == "TLS::verificationDepth") {
+		tlsVerificationDepth = value;
+	} else {
+		throw JXXRS::Error("JXXRS::PocoImpl::ClientBuilder: Unknown bool property " + name);
+	}
+	configuration = nullptr;
+}
+
+void ClientBuilder::property(const std::string& name, bool value)
+{
+	if (name == "TLS::verify") {
+		tlsVerify = value;
+	} else if (name == "TLS::useDefaultCAs") {
+		tlsUseDefaultCAs = value;
+	} else {
+		throw JXXRS::Error("JXXRS::PocoImpl::ClientBuilder: Unknown bool property " + name);
+	}
+	configuration = nullptr;
+}
+
+std::unique_ptr<JXXRS::Client> ClientBuilder::newClient()
+{
+	if (!connectionFactory) {
+		connectionFactory = std::make_shared<BasicConnectionFactory>();
+	}
+	if (!configuration) {
+		configuration = std::make_shared<Configuration>(connectionFactory, createSSLContext(), createProxyConfig());
+	}
+	return std::unique_ptr<JXXRS::Client>(new JXXRS::PocoImpl::Client(configuration));
+}
+
 Poco::Net::Context::Ptr ClientBuilder::createSSLContext() const
 {
-	Poco::Net::Context::Usage usage;
-	switch (clientSSLProtocol) {
-	case JXXRS::SSLProtocol::TLSV1:
-		usage = Poco::Net::Context::Usage::TLSV1_CLIENT_USE;
-		break;
-	case JXXRS::SSLProtocol::TLSV1_1:
-		usage = Poco::Net::Context::Usage::TLSV1_1_CLIENT_USE;
-		break;
-	case JXXRS::SSLProtocol::TLSV1_2:
-		usage = Poco::Net::Context::Usage::TLSV1_2_CLIENT_USE;
-		break;
-	default:
-		usage = Poco::Net::Context::Usage::TLSV1_2_CLIENT_USE;
-	}
 	Poco::Net::Context::Ptr context(
 		new Poco::Net::Context(
-			usage,
-			clientSSLTrustStore,
-			(clientSSLVerify ?
+			tlsUsage,
+			tlsTrustStore,
+			(tlsVerify ?
 			 Poco::Net::Context::VerificationMode::VERIFY_RELAXED :
 			 Poco::Net::Context::VerificationMode::VERIFY_NONE),
-			clientSSLVerificationDepth,
-			clientSSLDefaultCAs,
-			clientSSLCiphers));
-	if (!clientSSLKeyStore.empty()) {
-		Poco::Crypto::PKCS12Container pkcs12Container(clientSSLKeyStore, clientSSLKeyPassword);
+			tlsVerificationDepth,
+			tlsUseDefaultCAs,
+			tlsCiphers));
+	if (!tlsKeyStore.empty()) {
+		Poco::Crypto::PKCS12Container pkcs12Container(tlsKeyStore, tlsKeyPassword);
 		context->useCertificate(pkcs12Container.getX509Certificate());
 		context->usePrivateKey(Poco::Crypto::RSAKey(pkcs12Container.getKey()));
 	}
 	return context;
 }
 
-Poco::Net::HTTPClientSession::ProxyConfig ClientBuilder::createProxyConfig()
+Poco::Net::HTTPClientSession::ProxyConfig ClientBuilder::createProxyConfig() const
 {
-	ProxyConfig config;
-	if (!httpProxyURI.empty) {
-		config.host = httpProxyURI.getHost();
-		config.port = httpProxyURI.getPort();
-		auto userInfo = httpProxyURI.getUserInfo();
+	Poco::Net::HTTPClientSession::ProxyConfig config;
+	if (!httpProxy.empty()) {
+		config.host = httpProxy.getHost();
+		config.port = httpProxy.getPort();
+		auto userInfo = httpProxy.getUserInfo();
 		if (!userInfo.empty()) {
 			auto separator = userInfo.find(':');
-			if (separator == string::npos) {
+			if (separator == std::string::npos) {
 				throw Error("Malformed user info in proxy URI");
 			}
 			config.username = userInfo.substr(0, separator);
-			config.password = userInfo.substr(separator + 1, string::npos);
+			config.password = userInfo.substr(separator + 1, std::string::npos);
 		}
-		config.nonProxyHosts = noProxyPattern;
+		config.nonProxyHosts = httpNoProxy;
 	}
 	return config;
 }

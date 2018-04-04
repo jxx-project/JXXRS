@@ -5,18 +5,14 @@
 //
 
 
-#include "JXXRS/PocoImpl/PoolingConnectionFactory.hpp"
-#include "JXXRS/PocoImpl/Connection.hpp"
+#include "JXXRS/PocoImpl/PoolingConnectionFactory.h"
+#include "JXXRS/PocoImpl/Connection.h"
+#include <functional>
 
 namespace JXXRS {
 namespace PocoImpl {
 
-PoolingConnectionFactory::PoolingConnectionFactory(
-	Poco::Net::Context::Ptr sslContext,
-	Poco::Net::HTTPClientSession::ProxyConfig& proxyConfig,
-	std::size_t maxSessions,
-	bool keepAlive) :
-		sslContext(sslContext), proxyConfig(proxyConfig), maxSessions(maxSessions), keepAlive(keepAlive)
+PoolingConnectionFactory::PoolingConnectionFactory(std::size_t maxSessions, bool keepAlive) : maxSessions(maxSessions), keepAlive(keepAlive)
 {
 }
 
@@ -25,9 +21,9 @@ PoolingConnectionFactory::~PoolingConnectionFactory()
 }
 
 std::unique_ptr<JXXRS::Connection> PoolingConnectionFactory::get(
-	const std::string& scheme, const std::string& host, std::uint16_t port)
+	const JXXRS::Configuration& configuration, const std::string& scheme, const std::string& host, std::uint16_t port)
 {
-	SessionKey key(scheme, host, port);
+	SessionKey key(configuration, scheme, host, port);
 	std::lock_guard<std::mutex> guard(lock);
 	if (auto lastReleased = getLastReleased(key)) {
 		return std::unique_ptr<Connection>(new Connection(lastReleased));
@@ -37,6 +33,7 @@ std::unique_ptr<JXXRS::Connection> PoolingConnectionFactory::get(
 			break;
 		}
 	}
+	auto config = dynamic_cast<const Configuration&>(configuration);
 	return std::unique_ptr<Connection>(
 		new Connection(
 			sessions.emplace(
@@ -46,23 +43,23 @@ std::unique_ptr<JXXRS::Connection> PoolingConnectionFactory::get(
 						host,
 						port,
 						keepAlive,
-						sslContext,
-						proxyConfig)))->second));
+						config.getSSLContext(),
+						config.getProxyConfig())))->second));
 }
 
 std::size_t PoolingConnectionFactory::SessionKey::Hash::operator()(const SessionKey& key) const
 {
-	return std::hash<std::string>()(key.scheme) ^ std::hash<std::string>()(key.host) ^ std::hash<int>()(key.port);
+	return std::hash<const JXXRS::Configuration*>()(key.configuration) ^ std::hash<std::string>()(key.scheme) ^ std::hash<std::string>()(key.host) ^ std::hash<int>()(key.port);
 }
 
 bool PoolingConnectionFactory::SessionKey::operator==(const SessionKey& other) const
 {
-	return scheme == other.scheme && host == other.host && port == other.port;
+	return configuration == other.configuration && scheme == other.scheme && host == other.host && port == other.port;
 }
 
 PoolingConnectionFactory::SessionKey::SessionKey(
-	const std::string& scheme, const std::string& host, std::uint16_t port) :
-		scheme(scheme), host(host), port(port)
+	const JXXRS::Configuration& configuration, const std::string& scheme, const std::string& host, std::uint16_t port) :
+		configuration(&configuration), scheme(scheme), host(host), port(port)
 {
 }
 

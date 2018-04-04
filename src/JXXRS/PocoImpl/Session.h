@@ -17,10 +17,11 @@
 namespace JXXRS {
 namespace PocoImpl {
 
-struct Connection;
+class Connection;
 
-struct Session
+class Session
 {
+public:
 	Session(
 		const std::string& scheme,
 		const std::string& host,
@@ -38,13 +39,12 @@ struct Session
 	void release();
 	bool inUse() const;
 	bool releasedAfter(const Session& other) const;
-    Poco::Net::HTTPClientSession& getHTTPClientSession() {
+	Poco::Net::HTTPClientSession& getHTTPClientSession() {
 		return *httpClientSession;
 	}
-	
+
 private:
-	
-    std::unique_ptr<Poco::Net::HTTPClientSession> httpClientSession;
+	std::unique_ptr<Poco::Net::HTTPClientSession> httpClientSession;
 	bool acquired;
 	std::chrono::time_point<std::chrono::high_resolution_clock> releasedAt;
 	bool keepAlive;

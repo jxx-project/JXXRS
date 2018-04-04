@@ -5,7 +5,7 @@
 //
 
 
-#include "JXXRS/Error.hpp"
+#include "JXXRS/Error.h"
 
 namespace JXXRS {
 

@@ -4,11 +4,11 @@
 // SPDX-License-Identifier:		BSL-1.0
 //
 
-#include "JXXRS/Response.hpp"
+#include "JXXRS/Response.h"
 
 namespace JXXRS {
 namespace Accessor {
-	
+
 template<typename T>
 GetEntity<T, typename std::enable_if<!std::is_base_of<JXXON::Serializable, T>::value>::type>::GetEntity(
 	const Response& response) : response(response)

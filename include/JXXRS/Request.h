@@ -12,8 +12,9 @@
 
 namespace JXXRS {
 
-struct Request
+class Request
 {
+public:
 	virtual ~Request()
 	{
 	}

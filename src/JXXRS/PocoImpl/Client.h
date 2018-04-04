@@ -8,22 +8,22 @@
 #ifndef JXXRS_PocoImpl_Client_INCLUDED
 #define JXXRS_PocoImpl_Client_INCLUDED
 
-#include "JXXRS/Client.hpp"
-#include "JXXRS/ConnectionFactory.hpp"
+#include "JXXRS/Client.h"
+#include "JXXRS/PocoImpl/Configuration.h"
 
 namespace JXXRS {
 namespace PocoImpl {
 
-struct Client : public JXXRS::Client
+class Client : public JXXRS::Client
 {
-	Client(std::shared_ptr<JXXRS::ConnectionFactory> connectionFactory);
+public:
+	Client(std::shared_ptr<Configuration> configuration);
 	virtual ~Client();
 
 	virtual std::shared_ptr<JXXRS::WebTarget> target(const std::string& uri) const;
 
 private:
-
-	std::shared_ptr<JXXRS::ConnectionFactory> connectionFactory;
+	std::shared_ptr<Configuration> configuration;
 };
 
 } // namespace PocoImpl

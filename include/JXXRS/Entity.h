@@ -8,8 +8,8 @@
 #ifndef JXXRS_Entity_INCLUDED
 #define JXXRS_Entity_INCLUDED
 
-#include "JXXON/Serializable.hpp"
-#include "JXXRS/MediaType.hpp"
+#include <JXXON/Serializable.h>
+#include "JXXRS/MediaType.h"
 #include <memory>
 #include <string>
 #include <istream>
@@ -17,8 +17,9 @@
 
 namespace JXXRS {
 
-struct Entity
+class Entity
 {
+public:
 	Entity();
 	virtual ~Entity();
 

@@ -1,7 +1,7 @@
 //
 // Copyright (c) 2018 Dr. Michael Steffens
 //
-// SPDX-License-Identifier:     BSL-1.0
+// SPDX-License-Identifier:		BSL-1.0
 //
 
 
@@ -12,10 +12,11 @@
 
 namespace JXXRS {
 
-struct Error : public std::runtime_error
+class Error : public std::runtime_error
 {
+public:
 	Error(const std::string what);
-    virtual ~Error();
+	virtual ~Error();
 };
 
 } // namespace JXXRS

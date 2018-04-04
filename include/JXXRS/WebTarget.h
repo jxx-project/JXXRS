@@ -8,13 +8,14 @@
 #ifndef JXXRS_WebTarget_INCLUDED
 #define JXXRS_WebTarget_INCLUDED
 
-#include "JXXRS/Invocation.hpp"
+#include "JXXRS/Invocation.h"
 #include <memory>
 
 namespace JXXRS {
 
-struct WebTarget
+class WebTarget
 {
+public:
 	virtual ~WebTarget()
 	{
 	}

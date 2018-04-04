@@ -5,7 +5,7 @@
 //
 
 
-#include "JXXRS/TextEntity.hpp"
+#include "JXXRS/TextEntity.h"
 
 namespace JXXRS {
 
@@ -17,7 +17,7 @@ TextEntity::TextEntity(std::string&& text, const std::string& mediaType) :
 TextEntity::~TextEntity()
 {
 }
-  
+
 const std::string& TextEntity::getMediaType() const
 {
 	return mediaType;

@@ -5,7 +5,7 @@
 //
 
 
-#include "JXXRS/JsonEntity.hpp"
+#include "JXXRS/JsonEntity.h"
 
 namespace JXXRS {
 
@@ -17,7 +17,7 @@ JsonEntity::JsonEntity(JXXON::Json&& json, const std::string& mediaType) :
 JsonEntity::~JsonEntity()
 {
 }
-  
+
 const std::string& JsonEntity::getMediaType() const
 {
 	return MediaType::APPLICATION_JSON;

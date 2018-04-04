@@ -5,7 +5,7 @@
 //
 
 
-#include "JXXRS/StreamEntity.hpp"
+#include "JXXRS/StreamEntity.h"
 
 namespace JXXRS {
 
@@ -17,7 +17,7 @@ StreamEntity::StreamEntity(std::istream&& in, const std::string& mediaType) :
 StreamEntity::~StreamEntity()
 {
 }
-  
+
 const std::string& StreamEntity::getMediaType() const {
 	return mediaType;
 }

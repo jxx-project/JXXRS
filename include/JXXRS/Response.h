@@ -8,23 +8,23 @@
 #ifndef JXXRS_Response_INCLUDED
 #define JXXRS_Response_INCLUDED
 
-#include "JXXON/Serializable.hpp"
+#include <JXXON/Serializable.h>
 #include <memory>
 #include <string>
 
 namespace JXXRS {
 namespace Accessor {
-	
+
 template<typename T, typename Enable = void>
-struct GetEntity;
-	
+class GetEntity;
+
 } // namespace Accessor
 
-struct Connection;
-  
-struct Response
-{
+class Connection;
 
+class Response
+{
+public:
 	virtual ~Response()
 	{
 	}
@@ -41,41 +41,39 @@ struct Response
 	virtual std::istream& getStream() const = 0;
 
 protected:
-	
-    virtual JXXON::Json getJson() const = 0;
+	virtual JXXON::Json getJson() const = 0;
 };
 
 namespace Accessor {
-	
+
 template<typename T>
-struct GetEntity<T, typename std::enable_if<std::is_base_of<JXXON::Serializable, T>::value>::type>
+class GetEntity<T, typename std::enable_if<std::is_base_of<JXXON::Serializable, T>::value>::type>
 {
-		
+public:
 	GetEntity(const Response& response) : response(response)
 	{
 	}
-	
-	T operator()() const {
+
+	T operator()() const
+	{
 		return T(response.getJson());
 	}
 
 private:
-		
 	const Response& response;
 };
-	
+
 template<typename T>
-struct GetEntity<T, typename std::enable_if<!std::is_base_of<JXXON::Serializable, T>::value>::type>
+class GetEntity<T, typename std::enable_if<!std::is_base_of<JXXON::Serializable, T>::value>::type>
 {
-		
+public:
 	GetEntity(const Response& response);
 	T operator()() const;
 
 private:
-	  
 	const Response& response;
 };
-	
+
 } // namespace Accessor
 } // namespace JXXRS
 

@@ -8,9 +8,11 @@
 #ifndef JXXRS_PocoImpl_PoolingConnectionFactory_INCLUDED
 #define JXXRS_PocoImpl_PoolingConnectionFactory_INCLUDED
 
-#include "JXXRS/ConnectionFactory.hpp"
-#include "JXXRS/Connection.hpp"
-#include "JXXRS/PocoImpl/Session.hpp"
+#include "JXXRS/ConnectionFactory.h"
+#include "JXXRS/Configuration.h"
+#include "JXXRS/Connection.h"
+#include "JXXRS/PocoImpl/Configuration.h"
+#include "JXXRS/PocoImpl/Session.h"
 #include <Poco/Net/Context.h>
 #include <Poco/Net/HTTPClientSession.h>
 #include <unordered_map>
@@ -19,34 +21,34 @@
 namespace JXXRS {
 namespace PocoImpl {
 
-struct PoolingConnectionFactory : public JXXRS::ConnectionFactory
+class PoolingConnectionFactory : public JXXRS::ConnectionFactory
 {
-	PoolingConnectionFactory(
-		Poco::Net::Context::Ptr sslContext,
-		Poco::Net::HTTPClientSession::ProxyConfig& proxyConfig,
-		size_t maxConnections = 20,
-		bool keepAlive = true);
+public:
+	PoolingConnectionFactory(size_t maxConnections = 20, bool keepAlive = true);
 	virtual ~PoolingConnectionFactory();
-	
+
 	virtual std::unique_ptr<JXXRS::Connection> get(
+		const JXXRS::Configuration& configuration,
 		const std::string& scheme,
 		const std::string& host,
 		std::uint16_t port) override;
-	
-private:
 
+private:
 	struct SessionKey {
-          
 		struct Hash {
 			size_t operator()(const SessionKey& key) const;
 		};
-          
-		SessionKey(const std::string& scheme, const std::string& host, std::uint16_t port);
+
+		SessionKey(
+			const JXXRS::Configuration& configuration,
+			const std::string& scheme,
+			const std::string& host,
+			std::uint16_t port);
 		bool operator==(const SessionKey& other) const;
-		std::string scheme;
-		std::string host;
-		std::uint16_t port;
-          
+		const JXXRS::Configuration* configuration;
+		const std::string scheme;
+		const std::string host;
+		const std::uint16_t port;
 	};
 
 	std::shared_ptr<Session> getLastReleased(const SessionKey& key) const;
@@ -56,8 +58,6 @@ private:
 	std::mutex lock;
 	const size_t maxSessions;
 	const bool keepAlive;
-	Poco::Net::Context::Ptr sslContext;
-	Poco::Net::HTTPClientSession::ProxyConfig proxyConfig;
 };
 
 } // namespace PocoImpl

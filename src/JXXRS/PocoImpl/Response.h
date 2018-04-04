@@ -7,9 +7,9 @@
 #ifndef JXXRS_PocoImpl_Response_INCLUDED
 #define JXXRS_PocoImpl_Response_INCLUDED
 
-#include "JXXON/Serializable.hpp"
-#include "JXXRS/Connection.hpp"
-#include "JXXRS/Response.hpp"
+#include <JXXON/Serializable.h>
+#include "JXXRS/Connection.h"
+#include "JXXRS/Response.h"
 #include <Poco/Net/HTTPResponse.h>
 #include <memory>
 #include <string>
@@ -17,10 +17,11 @@
 namespace JXXRS {
 namespace PocoImpl {
 
-struct Connection;
+class Connection;
 
-struct Response : public JXXRS::Response
+class Response : public JXXRS::Response
 {
+public:
 	Response(std::unique_ptr<JXXRS::Connection> connection);
 	Response(const Response& other) = delete;
 	Response(Response&& other);
@@ -40,14 +41,12 @@ struct Response : public JXXRS::Response
 	}
 
 protected:
-	
 	virtual JXXON::Json getJson() const override;
 
 private:
-
-    Poco::Net::HTTPResponse httpResponse;
+	Poco::Net::HTTPResponse httpResponse;
 	std::unique_ptr<JXXRS::Connection> connection;
-    std::istream* in;
+	std::istream* in;
 };
 
 } // namespace PocoImpl

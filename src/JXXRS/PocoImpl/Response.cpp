@@ -5,7 +5,7 @@
 //
 
 
-#include "JXXRS/PocoImpl/Response.hpp"
+#include "JXXRS/PocoImpl/Response.h"
 #include <Poco/Exception.h>
 
 namespace JXXRS {
@@ -15,11 +15,13 @@ Response::Response(std::unique_ptr<JXXRS::Connection> connection) : connection(s
 {
 	in = &connection->receiveResponse(*this);
 }
-  
-Response::~Response() {
+
+Response::~Response()
+{
 }
-  
-int Response::getStatus() const {
+
+int Response::getStatus() const
+{
 	return httpResponse.getStatus();
 }
 

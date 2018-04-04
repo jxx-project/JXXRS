@@ -8,16 +8,17 @@
 #ifndef JXXRS_Connection_INCLUDED
 #define JXXRS_Connection_INCLUDED
 
-#include "JXXRS/Request.hpp"
-#include "JXXRS/Response.hpp"
+#include "JXXRS/Request.h"
+#include "JXXRS/Response.h"
 #include <memory>
 #include <ostream>
 #include <istream>
 
 namespace JXXRS {
 
-struct Connection
+class Connection
 {
+public:
 	virtual ~Connection()
 	{
 	}

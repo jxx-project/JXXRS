@@ -8,22 +8,24 @@
 #ifndef JXXRS_Invocation_INCLUDED
 #define JXXRS_Invocation_INCLUDED
 
-#include "JXXRS/Entity.hpp"
+#include "JXXRS/Entity.h"
 #include <memory>
 #include <string>
 
 namespace JXXRS {
 
-struct Response;
+class Response;
 
-struct Invocation
+class Invocation
 {
-	struct Builder
+public:
+	class Builder
 	{
+	public:
 		virtual ~Builder()
 		{
 		}
-		
+
 		virtual Builder& accept(const std::string& mediaType) = 0;
 		virtual Builder& header(const std::string& name, const std::string& value) = 0;
 		virtual std::unique_ptr<Invocation> build(const std::string& method) const = 0;
@@ -37,7 +39,7 @@ struct Invocation
 	virtual ~Invocation()
 	{
 	}
-	
+
 	virtual std::unique_ptr<Response> invoke() = 0;
 };
 

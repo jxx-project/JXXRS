@@ -5,10 +5,10 @@
 //
 
 
-#include "JXXRS/PocoImpl/Session.hpp"
-#include "JXXRS/Error.hpp"
-#include "PocoImpl/Net/HTTPClientSession.h"
-#include "PocoImpl/Net/HTTPSClientSession.h"
+#include "JXXRS/PocoImpl/Session.h"
+#include "JXXRS/Error.h"
+#include "Poco/Net/HTTPClientSession.h"
+#include "Poco/Net/HTTPSClientSession.h"
 #include <stdexcept>
 
 namespace JXXRS {
@@ -29,7 +29,7 @@ Session::Session(
 						   nullptr))
 {
 	if (!httpClientSession) {
-		throw JXXRS::Error("JXXRSPoco::Session::Session: Unknown scheme \"" + scheme + "\"");
+		throw JXXRS::Error("JXXRS::PocoImpl::Session::Session: Unknown scheme \"" + scheme + "\"");
 	}
 	httpClientSession->setKeepAlive(keepAlive);
 	httpClientSession->setProxyConfig(proxyConfig);
@@ -42,7 +42,7 @@ Session::~Session()
 void Session::acquire()
 {
 	if (acquired) {
-		throw std::logic_error("JXXRSPoco::Session::acquire: Already acquired! ");
+		throw std::logic_error("JXXRS::PocoImpl::Session::acquire: Already acquired! ");
 	} else {
 		acquired = true;
 	}
@@ -56,7 +56,7 @@ void Session::release()
 		}
 		acquired = false;
 	} else {
-		throw std::logic_error("JXXRSPoco::Session::release: Not acquired! ");
+		throw std::logic_error("JXXRS::PocoImpl::Session::release: Not acquired! ");
 	}
 }
 

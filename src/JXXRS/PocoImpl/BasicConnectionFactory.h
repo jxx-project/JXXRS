@@ -8,28 +8,24 @@
 #ifndef JXXRS_PocoImpl_BasicConnectionFactory_INCLUDED
 #define JXXRS_PocoImpl_BasicConnectionFactory_INCLUDED
 
-#include "JXXRS/ConnectionFactory.hpp"
+#include "JXXRS/ConnectionFactory.h"
 #include <Poco/Net/Context.h>
 #include <Poco/Net/HTTPClientSession.h>
 
 namespace JXXRS {
 namespace PocoImpl {
 
-struct BasicConnectionFactory : public JXXRS::ConnectionFactory
+class BasicConnectionFactory : public JXXRS::ConnectionFactory
 {
-	BasicConnectionFactory(Poco::Net::Context::Ptr sslContext,
-						   Poco::Net::HTTPClientSession::ProxyConfig& proxyConfig);
+public:
+	BasicConnectionFactory();
 	virtual ~BasicConnectionFactory();
 
 	virtual std::unique_ptr<JXXRS::Connection> get(
+		const JXXRS::Configuration& configuration,
 		const std::string& scheme,
 		const std::string& host,
 		std::uint16_t port) override;
-
-private:
-
-	Poco::Net::Context::Ptr sslContext;
-	Poco::Net::HTTPClientSession::ProxyConfig proxyConfig;
 };
 
 } // namespace PocoImpl

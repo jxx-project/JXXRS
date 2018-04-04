@@ -5,9 +5,9 @@
 //
 
 
-#include "JXXRS/PocoImpl/Connection.hpp"
-#include "JXXRS/PocoImpl/Request.hpp"
-#include "JXXRS/PocoImpl/Response.hpp"
+#include "JXXRS/PocoImpl/Connection.h"
+#include "JXXRS/PocoImpl/Request.h"
+#include "JXXRS/PocoImpl/Response.h"
 #include <Poco/Net/HTTPResponse.h>
 
 namespace JXXRS {
@@ -43,7 +43,7 @@ Connection::~Connection()
 std::ostream& Connection::sendRequest(std::unique_ptr<JXXRS::Request> request)
 {
 	if (out) {
-		throw std::logic_error("JXXRSPoco::Connection::sendRequest: already sent");
+		throw std::logic_error("JXXRS::PocoImpl::Connection::sendRequest: already sent");
 	} else {
 		out = &session->getHTTPClientSession().sendRequest(dynamic_cast<Request*>(request.get())->getHTTPRequest());
 		return *out;
@@ -53,7 +53,7 @@ std::ostream& Connection::sendRequest(std::unique_ptr<JXXRS::Request> request)
 std::istream& Connection::receiveResponse(JXXRS::Response& response)
 {
 	if (in) {
-		throw std::logic_error("JXXRSPoco::Connection::receiveResponse: already received");
+		throw std::logic_error("JXXRS::PocoImpl::Connection::receiveResponse: already received");
 	} else {
 		in = &session->getHTTPClientSession().receiveResponse(dynamic_cast<Response&>(response).getHTTPResponse());
 		return *in;

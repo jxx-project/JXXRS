@@ -8,19 +8,19 @@
 #ifndef JXXRS_PocoImpl_WebTarget_INCLUDED
 #define JXXRS_PocoImpl_WebTarget_INCLUDED
 
-#include "JXXRS/ConnectionFactory.hpp"
-#include "JXXRS/Invocation.hpp"
-#include "JXXRS/WebTarget.hpp"
+#include "JXXRS/PocoImpl/Configuration.h"
+#include "JXXRS/Invocation.h"
+#include "JXXRS/WebTarget.h"
 #include <Poco/URI.h>
 #include <memory>
 
 namespace JXXRS {
 namespace PocoImpl {
 
-struct WebTarget : public JXXRS::WebTarget
+class WebTarget : public JXXRS::WebTarget
 {
-
-	WebTarget(const Poco::URI& uri, std::shared_ptr<JXXRS::ConnectionFactory> connectionFactory);
+public:
+	WebTarget(const Poco::URI& uri, std::shared_ptr<Configuration> configuration);
 	virtual ~WebTarget();
 
 	virtual JXXRS::WebTarget& path(const std::string& path) override;
@@ -28,9 +28,8 @@ struct WebTarget : public JXXRS::WebTarget
 	virtual std::unique_ptr<JXXRS::Invocation::Builder> request() override;
 
 private:
-	
 	Poco::URI uri;
-	std::shared_ptr<JXXRS::ConnectionFactory> connectionFactory;
+	std::shared_ptr<Configuration> configuration;
 };
 
 } // namespace PocoImpl

@@ -5,7 +5,7 @@
 //
 
 
-#include "JXXRS/MediaType.hpp"
+#include "JXXRS/MediaType.h"
 
 namespace JXXRS {
 

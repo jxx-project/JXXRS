@@ -5,15 +5,15 @@
 //
 
 
-#include "JXXRS/PocoImpl/WebTarget.hpp"
-#include "JXXRS/PocoImpl/Invocation.hpp"
+#include "JXXRS/PocoImpl/WebTarget.h"
+#include "JXXRS/PocoImpl/Invocation.h"
 #include <sstream>
 
 namespace JXXRS {
 namespace PocoImpl {
 
-WebTarget::WebTarget(const Poco::URI& uri, std::shared_ptr<JXXRS::ConnectionFactory> connectionFactory) :
-		uri(uri), connectionFactory(connectionFactory)
+WebTarget::WebTarget(const Poco::URI& uri, std::shared_ptr<Configuration> configuration) :
+		uri(uri), configuration(configuration)
 {
 }
 
@@ -36,7 +36,7 @@ JXXRS::WebTarget& WebTarget::queryParam(const std::string& name, const std::stri
 std::unique_ptr<JXXRS::Invocation::Builder> WebTarget::request()
 {
 	return std::unique_ptr<JXXRS::Invocation::Builder>(
-		new JXXRSPoco::Invocation::Builder(uri, connectionFactory));
+		new JXXRS::PocoImpl::Invocation::Builder(uri, configuration));
 }
 
 } // namespace PocoImpl

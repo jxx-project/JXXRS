@@ -8,19 +8,25 @@
 #ifndef JXXRS_ConnectionFactory_INCLUDED
 #define JXXRS_ConnectionFactory_INCLUDED
 
-#include "JXXRS/Connection.hpp"
+#include "JXXRS/Configuration.h"
+#include "JXXRS/Connection.h"
 #include <memory>
 #include <string>
 
 namespace JXXRS {
 
-struct ConnectionFactory
+class ConnectionFactory
 {
+public:
 	virtual ~ConnectionFactory()
 	{
 	}
-	
-	virtual std::unique_ptr<Connection> get(const std::string& scheme, const std::string& host, std::uint16_t port) = 0;
+
+	virtual std::unique_ptr<Connection> get(
+		const Configuration& configuration,
+		const std::string& scheme,
+		const std::string& host,
+		std::uint16_t port) = 0;
 };
 
 } // namespace JXXRS

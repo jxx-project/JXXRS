@@ -8,10 +8,10 @@
 #ifndef JXXRS_PocoImpl_Connection_INCLUDED
 #define JXXRS_PocoImpl_Connection_INCLUDED
 
-#include "JXXRS/Connection.hpp"
-#include "JXXRS/PocoImpl/Session.hpp"
-#include "JXXRS/Request.hpp"
-#include "JXXRS/Response.hpp"
+#include "JXXRS/Connection.h"
+#include "JXXRS/PocoImpl/Session.h"
+#include "JXXRS/Request.h"
+#include "JXXRS/Response.h"
 #include <memory>
 #include <ostream>
 #include <istream>
@@ -19,10 +19,11 @@
 namespace JXXRS {
 namespace PocoImpl {
 
-struct Invocation;
+class Invocation;
 
-struct Connection : public JXXRS::Connection
+class Connection : public JXXRS::Connection
 {
+public:
 	Connection(std::shared_ptr<Session> session);
 	virtual ~Connection();
 	Connection(const Connection& other) = delete;
@@ -34,7 +35,6 @@ struct Connection : public JXXRS::Connection
 	virtual std::istream& receiveResponse(JXXRS::Response& response);
 
 private:
-	
 	std::shared_ptr<Session> session;
 	std::ostream* out;
 	std::istream* in;

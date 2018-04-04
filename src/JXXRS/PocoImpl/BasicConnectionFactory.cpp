@@ -5,29 +5,30 @@
 //
 
 
-#include "JXXRS/PocoImpl/BasicConnectionFactory.hpp"
-#include "JXXRS/PocoImpl/Connection.hpp"
-#include "JXXRS/PocoImpl/Session.hpp"
+#include "JXXRS/PocoImpl/BasicConnectionFactory.h"
+#include "JXXRS/PocoImpl/Configuration.h"
+#include "JXXRS/PocoImpl/Connection.h"
+#include "JXXRS/PocoImpl/Session.h"
 #include <iostream>
 
 namespace JXXRS {
 namespace PocoImpl {
 
-BasicConnectionFactory::BasicConnectionFactory(
-	Poco::Net::Context::Ptr sslContext,
-	Poco::Net::HTTPClientSession::ProxyConfig& proxyConfig) :
-		sslContext(sslContext), proxyConfig(proxyConfig)
+BasicConnectionFactory::BasicConnectionFactory()
 {
 }
 
-BasicConnectionFactory::~BasicConnectionFactory() {
+BasicConnectionFactory::~BasicConnectionFactory()
+{
 }
 
 std::unique_ptr<JXXRS::Connection> BasicConnectionFactory::get(
+	const JXXRS::Configuration& configuration,
 	const std::string& scheme,
 	const std::string& host,
 	std::uint16_t port)
 {
+	auto config = dynamic_cast<const Configuration&>(configuration);
 	return std::unique_ptr<Connection>(
 		new Connection(
 			std::shared_ptr<Session>(
@@ -36,8 +37,8 @@ std::unique_ptr<JXXRS::Connection> BasicConnectionFactory::get(
 					host,
 					port,
 					false,
-					sslContext,
-					proxyConfig))));
+					config.getSSLContext(),
+					config.getProxyConfig()))));
 }
 
 } // namespace PocoImpl

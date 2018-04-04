@@ -8,14 +8,15 @@
 #ifndef JXXRS_Client_INCLUDED
 #define JXXRS_Client_INCLUDED
 
-#include "JXXRS/WebTarget.hpp"
+#include "JXXRS/WebTarget.h"
 #include <memory>
 #include <string>
 
 namespace JXXRS {
 
-struct Client
+class Client
 {
+public:
 	virtual ~Client()
 	{
 	}

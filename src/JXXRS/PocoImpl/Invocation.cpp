@@ -5,10 +5,10 @@
 //
 
 
-#include "JXXRS/PocoImpl/Invocation.hpp"
-#include "JXXRS/MediaType.hpp"
-#include "JXXRS/PocoImpl/Request.hpp"
-#include "JXXRS/PocoImpl/Response.hpp"
+#include "JXXRS/PocoImpl/Invocation.h"
+#include "JXXRS/MediaType.h"
+#include "JXXRS/PocoImpl/Request.h"
+#include "JXXRS/PocoImpl/Response.h"
 #include <Poco/Net/HTTPMessage.h>
 #include <Poco/Net/HTTPRequest.h>
 
@@ -16,8 +16,8 @@ namespace JXXRS {
 namespace PocoImpl {
 
 Invocation::Builder::Builder
-(const Poco::URI& uri, std::shared_ptr<JXXRS::ConnectionFactory> connectionFactory) :
-	uri(uri), connectionFactory(connectionFactory)
+(const Poco::URI& uri, std::shared_ptr<Configuration> configuration) :
+		uri(uri), configuration(configuration)
 {
 }
 
@@ -39,14 +39,14 @@ JXXRS::Invocation::Builder& Invocation::Builder::header(const std::string& name,
 
 std::unique_ptr<JXXRS::Invocation> Invocation::Builder::build(const std::string& method) const
 {
-	std::unique_ptr<Invocation> invocation(new Invocation(method, uri, acceptedMediaTypes, headers, connectionFactory));
+	std::unique_ptr<Invocation> invocation(new Invocation(method, uri, acceptedMediaTypes, headers, configuration));
 	return invocation;
 }
 
 std::unique_ptr<JXXRS::Invocation> Invocation::Builder::build(
 	const std::string& method, std::unique_ptr<Entity> entity) const
 {
-	std::unique_ptr<Invocation> invocation(new Invocation(method, uri, acceptedMediaTypes, headers, connectionFactory));
+	std::unique_ptr<Invocation> invocation(new Invocation(method, uri, acceptedMediaTypes, headers, configuration));
 	invocation->request->setContentType(entity->getMediaType());
 	invocation->request->setChunkedTransferEncoding(true);
 	invocation->request->setKeepAlive(true);
@@ -79,10 +79,10 @@ Invocation::Invocation(
 	const Poco::URI& uri,
 	const std::set<std::string> &acceptedMediaTypes,
 	const std::multimap<std::string, std::string>& headers,
-	std::shared_ptr<JXXRS::ConnectionFactory> connectionFactory) :
+	std::shared_ptr<Configuration> configuration) :
 		uri(uri),
 		request(std::unique_ptr<Request>(new Request(method, uri.getPathAndQuery(), Poco::Net::HTTPMessage::HTTP_1_1))),
-		connectionFactory(connectionFactory)
+		configuration(configuration)
 {
 	for (auto i = acceptedMediaTypes.begin(); i != acceptedMediaTypes.end(); ++i) {
 		request->addHeader("Accept", *i);
@@ -99,12 +99,12 @@ Invocation::~Invocation()
 
 std::unique_ptr<JXXRS::Response> Invocation::invoke()
 {
-	auto connection = connectionFactory->get(uri.getScheme(), uri.getHost(), uri.getPort());
+	auto connection = configuration->getConnectionFactory().get(*configuration, uri.getScheme(), uri.getHost(), uri.getPort());
 	std::ostream& out = connection->sendRequest(std::move(request));
 	if (requestEntity) {
 		out << *requestEntity;
 	}
-	return std::unique_ptr<JXXRS::Response>(new JXXRSPoco::Response(std::move(connection)));
+	return std::unique_ptr<JXXRS::Response>(new JXXRS::PocoImpl::Response(std::move(connection)));
 }
 
 } // namespace PocoImpl

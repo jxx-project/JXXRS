@@ -5,9 +5,9 @@
 //
 
 
-#include "JXXRS/Entity.hpp"
-#include "JXXRS/JsonEntity.hpp"
-#include "JXXRS/StreamEntity.hpp"
+#include "JXXRS/Entity.h"
+#include "JXXRS/JsonEntity.h"
+#include "JXXRS/StreamEntity.h"
 
 namespace JXXRS {
 
