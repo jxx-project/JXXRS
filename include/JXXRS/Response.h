@@ -20,8 +20,6 @@ class GetEntity;
 
 } // namespace Accessor
 
-class Connection;
-
 class Response
 {
 public:

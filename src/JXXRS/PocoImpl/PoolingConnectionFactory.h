@@ -9,8 +9,6 @@
 #define JXXRS_PocoImpl_PoolingConnectionFactory_INCLUDED
 
 #include "JXXRS/ConnectionFactory.h"
-#include "JXXRS/Configuration.h"
-#include "JXXRS/Connection.h"
 #include "JXXRS/PocoImpl/Configuration.h"
 #include "JXXRS/PocoImpl/Session.h"
 #include <Poco/Net/Context.h>
@@ -24,7 +22,7 @@ namespace PocoImpl {
 class PoolingConnectionFactory : public JXXRS::ConnectionFactory
 {
 public:
-	PoolingConnectionFactory(size_t maxConnections = 20, bool keepAlive = true);
+	PoolingConnectionFactory(size_t maxConnections, bool keepAlive);
 	virtual ~PoolingConnectionFactory();
 
 	virtual std::unique_ptr<JXXRS::Connection> get(
