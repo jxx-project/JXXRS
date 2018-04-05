@@ -40,7 +40,7 @@ ClientBuilder& ClientBuilder::property(const std::string& name, bool value)
 
 std::unique_ptr<Client> ClientBuilder::newClient()
 {
-	return std::move(pimpl->newClient());
+	return pimpl->newClient();
 }
 
 } // namespace JXXRS
