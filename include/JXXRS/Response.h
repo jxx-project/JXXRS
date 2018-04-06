@@ -38,8 +38,11 @@ public:
 	virtual std::unique_ptr<std::string> getMediaType() const = 0;
 	virtual std::istream& getStream() const = 0;
 
-protected:
+private:
 	virtual JXXON::Json getJson() const = 0;
+
+	template<typename T, typename Enable>
+	friend class Accessor::GetEntity;
 };
 
 namespace Accessor {
