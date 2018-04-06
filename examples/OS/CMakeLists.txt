@@ -14,7 +14,7 @@ set(CMAKE_CXX_EXTENSIONS NO)
 
 find_package(JXXRS REQUIRED)
 
-file(GLOB API_SRCS_G API/src/OS/API/Model/*.cpp)
+file(GLOB API_SRCS_G API/src/OS/API/*.cpp API/src/OS/API/Model/*.cpp)
 add_library(osapi ${API_SRCS_G})
 
 target_include_directories(osapi PUBLIC
