@@ -9,8 +9,7 @@
 #include "JXXRS/PocoImpl/Connection.h"
 #include <functional>
 
-namespace JXXRS {
-namespace PocoImpl {
+namespace JXXRS { namespace PocoImpl {
 
 PoolingConnectionFactory::PoolingConnectionFactory(std::size_t maxSessions, bool keepAlive) : maxSessions(maxSessions), keepAlive(keepAlive)
 {
@@ -100,5 +99,4 @@ bool PoolingConnectionFactory::purgeFirstReleased()
 	}
 }
 
-} // namespace PocoImpl
-} // namespace JXXRS
+}} // namespace JXXRS::PocoImpl

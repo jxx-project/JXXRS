@@ -12,8 +12,7 @@
 #include <Poco/Net/HTTPMessage.h>
 #include <Poco/Net/HTTPRequest.h>
 
-namespace JXXRS {
-namespace PocoImpl {
+namespace JXXRS { namespace PocoImpl {
 
 Invocation::Builder::Builder
 (const Poco::URI& uri, std::shared_ptr<Configuration> configuration) :
@@ -107,5 +106,4 @@ std::unique_ptr<JXXRS::Response> Invocation::invoke()
 	return std::unique_ptr<JXXRS::Response>(new JXXRS::PocoImpl::Response(std::move(connection)));
 }
 
-} // namespace PocoImpl
-} // namespace JXXRS
+}} // namespace JXXRS::PocoImpl

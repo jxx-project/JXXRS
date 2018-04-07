@@ -14,8 +14,7 @@
 #include <memory>
 #include <chrono>
 
-namespace JXXRS {
-namespace PocoImpl {
+namespace JXXRS { namespace PocoImpl {
 
 class Connection;
 
@@ -50,7 +49,6 @@ private:
 	bool keepAlive;
 };
 
-} // namespace PocoImpl
-} // namespace JXXRS
+}} // namespace JXXRS::PocoImpl
 
 #endif // JXXRS_PocoImpl_Session_INCLUDED

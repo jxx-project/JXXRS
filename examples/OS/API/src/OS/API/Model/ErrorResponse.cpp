@@ -7,16 +7,14 @@
 
 #include "OS/API/Model/ErrorResponse.h"
 
-namespace OS {
-namespace API {
-namespace Model {
+namespace OS { namespace API { namespace Model {
 
 ErrorResponse::ErrorResponse()
 {
 }
 
 ErrorResponse::ErrorResponse(const JXXON::Json &json) :
-		error(json.get<std::shared_ptr<Error>>("error"))
+		error(json.get<decltype(error)>("error"))
 {
 }
 
@@ -27,6 +25,4 @@ JXXON::Json ErrorResponse::toJson() const
 	return json;
 }
 
-} // namespace Model
-} // namespace API
-} // namespace OS
+}}} // namespace OS::API::Model

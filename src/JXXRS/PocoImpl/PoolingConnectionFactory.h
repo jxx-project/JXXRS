@@ -16,8 +16,7 @@
 #include <unordered_map>
 #include <mutex>
 
-namespace JXXRS {
-namespace PocoImpl {
+namespace JXXRS { namespace PocoImpl {
 
 class PoolingConnectionFactory : public JXXRS::ConnectionFactory
 {
@@ -58,7 +57,6 @@ private:
 	const bool keepAlive;
 };
 
-} // namespace PocoImpl
-} // namespace JXXRS
+}} // namespace JXXRS::PocoImpl
 
 #endif // JXXRS_PocoImpl_PoolingConnectionFactory_INCLUDED

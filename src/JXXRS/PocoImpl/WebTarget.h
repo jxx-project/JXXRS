@@ -14,8 +14,7 @@
 #include <Poco/URI.h>
 #include <memory>
 
-namespace JXXRS {
-namespace PocoImpl {
+namespace JXXRS { namespace PocoImpl {
 
 class WebTarget : public JXXRS::WebTarget
 {
@@ -32,7 +31,6 @@ private:
 	std::shared_ptr<Configuration> configuration;
 };
 
-} // namespace PocoImpl
-} // namespace JXXRS
+}} // namespace JXXRS::PocoImpl
 
 #endif // JXXRS_PocoImpl_WebTarget_INCLUDED

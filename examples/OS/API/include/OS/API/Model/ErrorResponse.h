@@ -11,9 +11,7 @@
 #include "OS/API/Model/Error.h"
 #include <JXXON/Serializable.h>
 
-namespace OS {
-namespace API {
-namespace Model {
+namespace OS { namespace API { namespace Model {
 
 struct ErrorResponse : public JXXON::Serializable {
 	ErrorResponse();
@@ -23,8 +21,6 @@ struct ErrorResponse : public JXXON::Serializable {
 	std::shared_ptr<Error> error;
 };
 
-} // namespace Model
-} // namespace API
-} // namespace OS
+}}} // namespace OS::API::Model
 
 #endif // OS_API_Model_ErrorResponse_INCLUDED

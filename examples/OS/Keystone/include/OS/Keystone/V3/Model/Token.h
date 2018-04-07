@@ -17,10 +17,7 @@
 #include <JXXON/Serializable.h>
 #include <string>
 
-namespace OS {
-namespace Keystone {
-namespace V3 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V3 { namespace Model {
 
 struct Token : public JXXON::Serializable
 {
@@ -40,9 +37,6 @@ struct Token : public JXXON::Serializable
 	std::shared_ptr<JXXON::List<Role>> roles;
 };
 
-} // namespace Model
-} // namespace V3
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V3::Model
 
 #endif // OS_Keystone_V3_Model_Token_INCLUDED

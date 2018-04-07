@@ -7,18 +7,16 @@
 
 #include "OS/API/Model/Link.h"
 
-namespace OS {
-namespace API {
-namespace Model {
+namespace OS { namespace API { namespace Model {
 
 Link::Link()
 {
 }
 
 Link::Link(const JXXON::Json &json) :
-		href(json.get<std::shared_ptr<std::string>>("href")),
-		rel(json.get<std::shared_ptr<std::string>>("rel")),
-		type(json.get<std::shared_ptr<std::string>>("type"))
+		href(json.get<decltype(href)>("href")),
+		rel(json.get<decltype(rel)>("rel")),
+		type(json.get<decltype(type)>("type"))
 {
 }
 
@@ -31,6 +29,4 @@ JXXON::Json Link::toJson() const
 	return json;
 }
 
-} // namespace Model
-} // namespace API
-} // namespace OS
+}}} // namespace OS::API::Model

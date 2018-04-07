@@ -11,8 +11,7 @@
 #include "JXXRS/PocoImpl/Session.h"
 #include <iostream>
 
-namespace JXXRS {
-namespace PocoImpl {
+namespace JXXRS { namespace PocoImpl {
 
 BasicConnectionFactory::BasicConnectionFactory()
 {
@@ -41,5 +40,4 @@ std::unique_ptr<JXXRS::Connection> BasicConnectionFactory::get(
 					config.getProxyConfig()))));
 }
 
-} // namespace PocoImpl
-} // namespace JXXRS
+}} // namespace JXXRS::PocoImpl

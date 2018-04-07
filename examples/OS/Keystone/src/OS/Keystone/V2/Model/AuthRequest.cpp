@@ -7,17 +7,14 @@
 
 #include "OS/Keystone/V2/Model/AuthRequest.h"
 
-namespace OS {
-namespace Keystone {
-namespace V2 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V2 { namespace Model {
 
 AuthRequest::AuthRequest()
 {
 }
 
 AuthRequest::AuthRequest(const JXXON::Json &json) :
-		auth(json.get<std::shared_ptr<Auth>>("auth"))
+		auth(json.get<decltype(auth)>("auth"))
 {
 }
 
@@ -28,7 +25,4 @@ JXXON::Json AuthRequest::toJson() const
 	return json;
 }
 
-} // namespace Model
-} // namespace V3
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V2::Model

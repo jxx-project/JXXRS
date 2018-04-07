@@ -14,8 +14,7 @@
 #include <memory>
 #include <string>
 
-namespace JXXRS {
-namespace PocoImpl {
+namespace JXXRS { namespace PocoImpl {
 
 class Connection;
 
@@ -49,7 +48,6 @@ private:
 	std::istream* in;
 };
 
-} // namespace PocoImpl
-} // namespace JXXRS
+}} // namespace JXXRS::PocoImpl
 
 #endif // JXXRS_PocoImpl_Response_INCLUDED

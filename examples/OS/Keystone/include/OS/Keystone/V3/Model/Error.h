@@ -11,10 +11,7 @@
 #include "OS/API/Model/Error.h"
 #include "OS/Keystone/V3/Model/Identity.h"
 
-namespace OS {
-namespace Keystone {
-namespace V3 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V3 { namespace Model {
 
 struct Error : public OS::API::Model::Error
 {
@@ -25,9 +22,6 @@ struct Error : public OS::API::Model::Error
 	std::shared_ptr<Identity> identity;
 };
 
-} // namespace Model
-} // namespace V3
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V3::Model
 
 #endif // OS_Keystone_V3_Model_Error_INCLUDED

@@ -11,9 +11,7 @@
 #include <JXXON/Serializable.h>
 #include <string>
 
-namespace OS {
-namespace API {
-namespace Model {
+namespace OS { namespace API { namespace Model {
 
 struct MediaType : public JXXON::Serializable
 {
@@ -25,8 +23,6 @@ struct MediaType : public JXXON::Serializable
 	std::shared_ptr<std::string> type;
 };
 
-} // namespace Model
-} // namespace API
-} // namespace OS
+}}} // namespace OS::API::Model
 
 #endif // OS_API_Model_MediaType_INCLUDED

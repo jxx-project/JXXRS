@@ -7,20 +7,17 @@
 
 #include "OS/Keystone/V2/Model/Trust.h"
 
-namespace OS {
-namespace Keystone {
-namespace V2 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V2 { namespace Model {
 
 Trust::Trust()
 {
 }
 
 Trust::Trust(const JXXON::Json &json) :
-		id(json.get<std::shared_ptr<std::string>>("id")),
-		trusteeUserId(json.get<std::shared_ptr<std::string>>("trustee_user_id")),
-		trustorUserId(json.get<std::shared_ptr<std::string>>("trustor_user_id")),
-		impersonation(json.get<std::shared_ptr<bool>>("impersonation"))
+		id(json.get<decltype(id)>("id")),
+		trusteeUserId(json.get<decltype(trusteeUserId)>("trustee_user_id")),
+		trustorUserId(json.get<decltype(trustorUserId)>("trustor_user_id")),
+		impersonation(json.get<decltype(impersonation)>("impersonation"))
 {
 }
 
@@ -34,7 +31,4 @@ JXXON::Json Trust::toJson() const
 	return json;
 }
 
-} // namespace Model
-} // namespace V2
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V2::Model

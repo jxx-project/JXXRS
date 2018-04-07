@@ -7,18 +7,15 @@
 
 #include "OS/Keystone/V3/Model/ChallengeResponse.h"
 
-namespace OS {
-namespace Keystone {
-namespace V3 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V3 { namespace Model {
 
 ChallengeResponse::ChallengeResponse()
 {
 }
 
 ChallengeResponse::ChallengeResponse(const JXXON::Json &json) :
-		challenge(json.get<std::shared_ptr<std::string>>("challenge")),
-		sessionId(json.get<std::shared_ptr<std::string>>("session_id"))
+		challenge(json.get<decltype(challenge)>("challenge")),
+		sessionId(json.get<decltype(sessionId)>("session_id"))
 {
 }
 
@@ -30,7 +27,4 @@ JXXON::Json ChallengeResponse::toJson() const
 	return json;
 }
 
-} // namespace Model
-} // namespace V3
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V3::Model

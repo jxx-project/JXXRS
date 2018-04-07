@@ -7,18 +7,15 @@
 
 #include "OS/Keystone/V2/Model/Metadata.h"
 
-namespace OS {
-namespace Keystone {
-namespace V2 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V2 { namespace Model {
 
 Keystone::V2::Model::Metadata::Metadata()
 {
 }
 
 Metadata::Metadata(const JXXON::Json &json) :
-		isAdmin(json.get<std::shared_ptr<int>>("is_admin")),
-		roles(json.get<std::shared_ptr<JXXON::List<std::string>>>("roles"))
+		isAdmin(json.get<decltype(isAdmin)>("is_admin")),
+		roles(json.get<decltype(roles)>("roles"))
 {
 }
 
@@ -30,7 +27,4 @@ JXXON::Json Metadata::toJson() const
 	return json;
 }
 
-} // namespace Model
-} // namespace V3
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V2::Model

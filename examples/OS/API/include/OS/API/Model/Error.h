@@ -11,9 +11,7 @@
 #include <JXXON/Serializable.h>
 #include <string>
 
-namespace OS {
-namespace API {
-namespace Model {
+namespace OS { namespace API { namespace Model {
 
 struct Error : public JXXON::Serializable
 {
@@ -26,8 +24,6 @@ struct Error : public JXXON::Serializable
 	std::shared_ptr<std::string> message;
 };
 
-} // namespace Model
-} // namespace API
-} // namespace OS
+}}} // namespace OS::API::Model
 
 #endif // OS_API_Model_Error_INCLUDED

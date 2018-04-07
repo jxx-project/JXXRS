@@ -9,8 +9,7 @@
 #include "JXXRS/PocoImpl/Invocation.h"
 #include <sstream>
 
-namespace JXXRS {
-namespace PocoImpl {
+namespace JXXRS { namespace PocoImpl {
 
 WebTarget::WebTarget(const Poco::URI& uri, std::shared_ptr<Configuration> configuration) :
 		uri(uri), configuration(configuration)
@@ -39,5 +38,4 @@ std::unique_ptr<JXXRS::Invocation::Builder> WebTarget::request()
 		new JXXRS::PocoImpl::Invocation::Builder(uri, configuration));
 }
 
-} // namespace PocoImpl
-} // namespace JXXRS
+}} // namespace JXXRS::PocoImpl

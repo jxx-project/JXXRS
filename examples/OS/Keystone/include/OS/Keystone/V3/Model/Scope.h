@@ -12,10 +12,7 @@
 #include "OS/Keystone/V3/Model/Project.h"
 #include <JXXON/Serializable.h>
 
-namespace OS {
-namespace Keystone {
-namespace V3 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V3 { namespace Model {
 
 struct Scope : public JXXON::Serializable
 {
@@ -27,9 +24,6 @@ struct Scope : public JXXON::Serializable
 	std::shared_ptr<Project> project;
 };
 
-} // namespace Model
-} // namespace V3
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V3::Model
 
 #endif // OS_Keystone_V3_Model_Scope_INCLUDED

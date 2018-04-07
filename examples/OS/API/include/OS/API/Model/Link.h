@@ -11,9 +11,7 @@
 #include <JXXON/Serializable.h>
 #include <string>
 
-namespace OS {
-namespace API {
-namespace Model {
+namespace OS { namespace API { namespace Model {
 
 struct Link : public JXXON::Serializable
 {
@@ -26,8 +24,6 @@ struct Link : public JXXON::Serializable
 	std::shared_ptr<std::string> type;
 };
 
-} // namespace Model
-} // namespace API
-} // namespace OS
+}}} // namespace OS::API::Model
 
 #endif // OS_API_Model_Link_INCLUDED

@@ -7,17 +7,15 @@
 
 #include "OS/API/Model/MediaType.h"
 
-namespace OS {
-namespace API {
-namespace Model {
+namespace OS { namespace API { namespace Model {
 
 MediaType::MediaType()
 {
 }
 
 MediaType::MediaType(const JXXON::Json &json) :
-		base(json.get<std::shared_ptr<std::string>>("base")),
-		type(json.get<std::shared_ptr<std::string>>("type"))
+		base(json.get<decltype(base)>("base")),
+		type(json.get<decltype(type)>("type"))
 {
 }
 
@@ -29,6 +27,4 @@ JXXON::Json MediaType::toJson() const
 	return json;
 }
   
-} // namespace Model
-} // namespace API
-} // namespace OS
+}}} // namespace OS::API::Model

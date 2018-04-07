@@ -16,8 +16,7 @@
 #include <Poco/Net/HTTPClientSession.h>
 #include <Poco/URI.h>
 
-namespace JXXRS {
-namespace PocoImpl {
+namespace JXXRS { namespace PocoImpl {
 
 class ClientBuilder : public AbstractClientBuilder
 {
@@ -49,7 +48,6 @@ private:
 	std::shared_ptr<Configuration> configuration;
 };
 
-} // namespace PocoImpl
-} // namespace JXXRS
+}} // namespace JXXRS::PocoImpl
 
 #endif // JXXRS_PocoImpl_ClientBuilder_INCLUDED

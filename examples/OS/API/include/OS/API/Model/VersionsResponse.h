@@ -12,9 +12,7 @@
 #include <JXXON/List.h>
 #include <JXXON/Serializable.h>
 
-namespace OS {
-namespace API {
-namespace Model {
+namespace OS { namespace API { namespace Model {
 
 struct VersionsResponse : public JXXON::Serializable {
 	VersionsResponse();
@@ -30,8 +28,6 @@ private:
 	};
 };
 
-} // namespace Model
-} // namespace API
-} // namespace OS
+}}} // namespace OS::API::Model
 
 #endif // OS_API_Model_VersionsResponse_INCLUDED

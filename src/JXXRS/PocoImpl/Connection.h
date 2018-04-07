@@ -16,8 +16,7 @@
 #include <ostream>
 #include <istream>
 
-namespace JXXRS {
-namespace PocoImpl {
+namespace JXXRS { namespace PocoImpl {
 
 class Invocation;
 
@@ -40,7 +39,6 @@ private:
 	std::istream* in;
 };
 
-} // namespace PocoImpl
-} // namespace JXXRS
+}} // namespace JXXRS::PocoImpl
 
 #endif // JXXRS_PocoImpl_Connection_INCLUDED

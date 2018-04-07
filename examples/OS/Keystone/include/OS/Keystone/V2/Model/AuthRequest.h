@@ -11,10 +11,7 @@
 #include "OS/Keystone/V2/Model/Auth.h"
 #include <JXXON/Serializable.h>
 
-namespace OS {
-namespace Keystone {
-namespace V2 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V2 { namespace Model {
 
 struct AuthRequest : public JXXON::Serializable
 {
@@ -25,9 +22,6 @@ struct AuthRequest : public JXXON::Serializable
 	std::shared_ptr<Auth> auth;
 };
 
-} // namespace Model
-} // namespace V2
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V2::Model
 
 #endif // OS_Keystone_V2_Model_AuthRequest_INCLUDED

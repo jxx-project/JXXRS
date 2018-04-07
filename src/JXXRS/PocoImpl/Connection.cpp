@@ -10,8 +10,7 @@
 #include "JXXRS/PocoImpl/Response.h"
 #include <Poco/Net/HTTPResponse.h>
 
-namespace JXXRS {
-namespace PocoImpl {
+namespace JXXRS { namespace PocoImpl {
 
 Connection::Connection(std::shared_ptr<Session> session) : session(session), out(nullptr), in(nullptr)
 {
@@ -60,5 +59,4 @@ std::istream& Connection::receiveResponse(JXXRS::Response& response)
 	}
 }
 
-} // namespace PocoImpl
-} // namespace JXXRS
+}} // namespace JXXRS::PocoImpl

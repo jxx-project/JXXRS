@@ -16,8 +16,7 @@
 #include <map>
 #include <set>
 
-namespace JXXRS {
-namespace PocoImpl {
+namespace JXXRS { namespace PocoImpl {
 
 class Invocation : public JXXRS::Invocation
 {
@@ -63,7 +62,6 @@ private:
 	std::shared_ptr<Configuration> configuration;
 };
 
-} // namespace PocoImpl
-} // namespace JXXRS
+}} // namespace JXXRS::PocoImpl
 
 #endif // JXXRS_PocoImpl_Invocation_INCLUDED

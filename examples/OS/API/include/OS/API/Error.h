@@ -11,8 +11,7 @@
 #include "OS/API/Model/Error.h"
 #include <stdexcept>
 
-namespace OS {
-namespace API {
+namespace OS { namespace API {
 
 class Error : public std::runtime_error
 {
@@ -22,7 +21,6 @@ public:
 	Error(const std::shared_ptr<Model::Error> error);
 };
 
-} // namespace API
-} // namespace OS
+}} // namespace OS::API
 
 #endif // OS_API_Error_INCLUDED

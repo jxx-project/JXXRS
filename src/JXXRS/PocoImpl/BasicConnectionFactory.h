@@ -12,8 +12,7 @@
 #include <Poco/Net/Context.h>
 #include <Poco/Net/HTTPClientSession.h>
 
-namespace JXXRS {
-namespace PocoImpl {
+namespace JXXRS { namespace PocoImpl {
 
 class BasicConnectionFactory : public JXXRS::ConnectionFactory
 {
@@ -28,7 +27,6 @@ public:
 		std::uint16_t port) override;
 };
 
-} // namespace PocoImpl
-} // namespace JXXRS
+}} // namespace JXXRS::PocoImpl
 
 #endif // JXXRS_PocoImpl_BasicConnectionFactory_INCLUDED

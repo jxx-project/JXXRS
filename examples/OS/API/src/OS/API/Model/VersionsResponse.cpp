@@ -7,9 +7,7 @@
 
 #include "OS/API/Model/VersionsResponse.h"
 
-namespace OS {
-namespace API {
-namespace Model {
+namespace OS { namespace API { namespace Model {
 
 VersionsResponse::VersionsResponse()
 {
@@ -34,10 +32,8 @@ JXXON::Json VersionsResponse::toJson() const
 }
 
 VersionsResponse::Versions::Versions(const JXXON::Json &json) :
-		values(json.get<std::shared_ptr<JXXON::List<Version>>>("values"))
+		values(json.get<decltype(values)>("values"))
 {
 }
 
-} // namespace Model
-} // namespace API
-} // namespace OS
+}}} // namespace OS::API::Model

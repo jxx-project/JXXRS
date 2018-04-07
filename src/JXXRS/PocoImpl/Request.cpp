@@ -7,8 +7,7 @@
 
 #include "JXXRS/PocoImpl/Request.h"
 
-namespace JXXRS {
-namespace PocoImpl {
+namespace JXXRS { namespace PocoImpl {
 
 Request::Request(const std::string& httpMethod, const std::string& uri, const std::string& httpVersion) :
 		httpRequest(httpMethod, uri, httpVersion)
@@ -44,5 +43,4 @@ void Request::setHost(const std::string& host, uint16_t port)
 	httpRequest.setHost(host, port);
 }
 
-} // namespace PocoImpl
-} // namespace JXXRS
+}} // namespace JXXRS::PocoImpl

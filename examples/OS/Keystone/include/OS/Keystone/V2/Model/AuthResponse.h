@@ -11,10 +11,7 @@
 #include "OS/Keystone/V2/Model/Access.h"
 #include <JXXON/Serializable.h>
 
-namespace OS {
-namespace Keystone {
-namespace V2 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V2 { namespace Model {
 
 struct AuthResponse : public JXXON::Serializable
 {

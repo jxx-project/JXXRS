@@ -14,8 +14,7 @@
 #include <JXXRS/MediaType.h>
 #include <JXXRS/WebTarget.h>
 
-namespace OS {
-namespace API {
+namespace OS { namespace API {
 
 Client::Client(std::shared_ptr<JXXRS::Client> client) : client(client)
 {
@@ -83,5 +82,4 @@ std::pair<std::shared_ptr<Model::Version>, std::shared_ptr<JXXON::List<Model::Ve
 	}
 }
 
-} // namespace API
-} // namespace OS
+}} // namespace OS::API

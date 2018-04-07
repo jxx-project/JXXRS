@@ -7,20 +7,18 @@
 
 #include "OS/API/Model/Version.h"
 
-namespace OS {
-namespace API {
-namespace Model {
+namespace OS { namespace API { namespace Model {
 
 Version::Version()
 {
 }
 
 Version::Version(const JXXON::Json &json) :
-		id(json.get<std::shared_ptr<std::string>>("id")),
-		status(json.get<std::shared_ptr<std::string>>("status")),
-		updated(json.get<std::shared_ptr<std::string>>("updated")),
-		links(json.get<std::shared_ptr<JXXON::List<Link>>>("links")),
-		mediaTypes(json.get<std::shared_ptr<JXXON::List<MediaType>>>("media-types"))
+		id(json.get<decltype(id)>("id")),
+		status(json.get<decltype(status)>("status")),
+		updated(json.get<decltype(updated)>("updated")),
+		links(json.get<decltype(links)>("links")),
+		mediaTypes(json.get<decltype(mediaTypes)>("media-types"))
 {
 }
 
@@ -35,6 +33,4 @@ JXXON::Json Version::toJson() const
 	return json;
 }
 
-} // namespace Model
-} // namespace API
-} // namespace OS
+}}} // namespace OS::API::Model

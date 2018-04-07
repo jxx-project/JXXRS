@@ -14,9 +14,7 @@
 #include <JXXON/Serializable.h>
 #include <string>
 
-namespace OS {
-namespace API {
-namespace Model {
+namespace OS { namespace API { namespace Model {
 
 struct Version : public JXXON::Serializable
 {
@@ -31,8 +29,6 @@ struct Version : public JXXON::Serializable
 	std::shared_ptr<JXXON::List<MediaType>> mediaTypes;
 };
 
-} // namespace Model
-} // namespace API
-} // namespace OS
+}}} // namespace OS::API::Model
 
 #endif // OS_API_Model_Version_INCLUDED

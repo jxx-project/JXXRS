@@ -7,17 +7,14 @@
 
 #include "OS/Keystone/V3/Model/Links.h"
 
-namespace OS {
-namespace Keystone {
-namespace V3 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V3 { namespace Model {
 
 Links::Links()
 {
 }
 
 Links::Links(const JXXON::Json &json) :
-		self(json.get<std::shared_ptr<std::string>>("self"))
+		self(json.get<decltype(self)>("self"))
 {
 }
 
@@ -28,7 +25,4 @@ JXXON::Json Links::toJson() const
 	return json;
 }
 
-} // namespace Model
-} // namespace V3
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V3::Model

@@ -7,16 +7,14 @@
 
 #include "OS/API/Model/VersionResponse.h"
 
-namespace OS {
-namespace API {
-namespace Model {
+namespace OS { namespace API { namespace Model {
 
 VersionResponse::VersionResponse()
 {
 }
 
 VersionResponse::VersionResponse(const JXXON::Json &json) :
-		version(json.get<std::shared_ptr<Version>>("version"))
+		version(json.get<decltype(version)>("version"))
 {
 }
 
@@ -26,6 +24,4 @@ JXXON::Json VersionResponse::toJson() const {
 	return json;
 }
 
-} // namespace Model
-} // namespace API
-} // namespace OS
+}}} // namespace OS::API::Model

@@ -9,8 +9,7 @@
 
 using namespace std;
 
-namespace OS {
-namespace API {
+namespace OS { namespace API {
 
 Error::Error(const std::string& what) : std::runtime_error(what)
 {
@@ -24,5 +23,4 @@ Error::Error(const std::shared_ptr<Model::Error> error) : runtime_error(error ? 
 {
 }
 
-} // namespace API
-} // namespace OS
+}} // namespace OS::API

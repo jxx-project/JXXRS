@@ -11,10 +11,7 @@
 #include <JXXON/Serializable.h>
 #include <string>
 
-namespace OS {
-namespace Keystone {
-namespace V2 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V2 { namespace Model {
 
 struct Tenant : public JXXON::Serializable
 {
@@ -28,9 +25,6 @@ struct Tenant : public JXXON::Serializable
 	std::shared_ptr<bool> enabled;
 };
 
-} // namespace Model
-} // namespace V2
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V2::Model
 
 #endif // OS_Keystone_V2_Model_Tenant_INCLUDED

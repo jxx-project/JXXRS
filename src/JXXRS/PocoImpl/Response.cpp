@@ -8,8 +8,7 @@
 #include "JXXRS/PocoImpl/Response.h"
 #include <Poco/Exception.h>
 
-namespace JXXRS {
-namespace PocoImpl {
+namespace JXXRS { namespace PocoImpl {
 
 Response::Response(std::unique_ptr<JXXRS::Connection> connection) : connection(std::move(connection))
 {
@@ -50,5 +49,4 @@ JXXON::Json Response::getJson() const
 	return json;
 }
 
-} // namespace PocoImpl
-} // namespace JXXRS
+}} // namespace JXXRS::PocoImpl

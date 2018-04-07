@@ -7,18 +7,15 @@
 
 #include "OS/Keystone/V3/Model/Auth.h"
 
-namespace OS {
-namespace Keystone {
-namespace V3 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V3 { namespace Model {
 
 Auth::Auth()
 {
 }
 
 Auth::Auth(const JXXON::Json &json) :
-		identity(json.get<std::shared_ptr<Identity>>("identity")),
-		scope(json.get<std::shared_ptr<Scope>>("scope"))
+		identity(json.get<decltype(identity)>("identity")),
+		scope(json.get<decltype(scope)>("scope"))
 {
 }
 
@@ -30,7 +27,4 @@ JXXON::Json Auth::toJson() const
 	return json;
 }
 
-} // namespace Model
-} // namespace V3
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V3::Model

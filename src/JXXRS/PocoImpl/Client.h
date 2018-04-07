@@ -11,8 +11,7 @@
 #include "JXXRS/Client.h"
 #include "JXXRS/PocoImpl/Configuration.h"
 
-namespace JXXRS {
-namespace PocoImpl {
+namespace JXXRS { namespace PocoImpl {
 
 class Client : public JXXRS::Client
 {
@@ -26,7 +25,6 @@ private:
 	std::shared_ptr<Configuration> configuration;
 };
 
-} // namespace PocoImpl
-} // namespace JXXRS
+}} // namespace JXXRS::PocoImpl
 
 #endif // JXXRS_PocoImpl_Client_INCLUDED

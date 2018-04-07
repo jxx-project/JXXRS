@@ -7,17 +7,14 @@
 
 #include "OS/Keystone/V2/Model/ErrorResponse.h"
 
-namespace OS {
-namespace Keystone {
-namespace V2 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V2 { namespace Model {
 
 ErrorResponse::ErrorResponse()
 {
 }
 
 ErrorResponse::ErrorResponse(const JXXON::Json &json) :
-		error(json.get<std::shared_ptr<OS::API::Model::Error>>("error"))
+		error(json.get<decltype(error)>("error"))
 {
 }
 
@@ -28,7 +25,4 @@ JXXON::Json ErrorResponse::toJson() const
 	return json;
 }
 
-} // namespace Model
-} // namespace V3
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V2::Model

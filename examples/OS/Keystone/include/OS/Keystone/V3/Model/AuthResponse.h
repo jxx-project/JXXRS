@@ -11,10 +11,7 @@
 #include "OS/Keystone/V3/Model/Token.h"
 #include <JXXON/Serializable.h>
 
-namespace OS {
-namespace Keystone {
-namespace V3 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V3 { namespace Model {
 
 struct AuthResponse : public JXXON::Serializable
 {
@@ -25,9 +22,6 @@ struct AuthResponse : public JXXON::Serializable
 	std::shared_ptr<Token> token;
 };
 
-} // namespace Model
-} // namespace V3
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V3::Model
 
 #endif // OS_Keystone_V3_Model_AuthResponse_INCLUDED

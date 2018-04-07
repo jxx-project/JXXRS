@@ -11,9 +11,7 @@
 #include "OS/API/Model/Version.h"
 #include <JXXON/Serializable.h>
 
-namespace OS {
-namespace API {
-namespace Model {
+namespace OS { namespace API { namespace Model {
 
 struct VersionResponse : public JXXON::Serializable
 {
@@ -24,8 +22,6 @@ struct VersionResponse : public JXXON::Serializable
 	std::shared_ptr<Version> version;
 };
 
-} // namespace Model
-} // namespace API
-} // namespace OS
+}}} // namespace OS::API::Model
 
 #endif // OS_API_Model_VersionResponse_INCLUDED

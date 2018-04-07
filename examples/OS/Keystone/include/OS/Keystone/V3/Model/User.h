@@ -13,10 +13,7 @@
 #include <JXXON/Serializable.h>
 #include <string>
 
-namespace OS {
-namespace Keystone {
-namespace V3 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V3 { namespace Model {
 
 struct User : public JXXON::Serializable
 {
@@ -31,9 +28,6 @@ struct User : public JXXON::Serializable
 	std::shared_ptr<Links> links;
 };
 
-} // namespace Model
-} // namespace V3
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V3::Model
 
 #endif // OS_Keystone_V3_Model_User_INCLUDED

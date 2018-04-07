@@ -11,8 +11,7 @@
 #include "Poco/Net/HTTPSClientSession.h"
 #include <stdexcept>
 
-namespace JXXRS {
-namespace PocoImpl {
+namespace JXXRS { namespace PocoImpl {
 
 Session::Session(
 	const std::string& scheme,
@@ -70,5 +69,4 @@ bool Session::releasedAfter(const Session& other) const
 	return releasedAt > other.releasedAt;
 }
 
-} // namespace PocoImpl
-} // namespace JXXRS
+}} // namespace JXXRS::PocoImpl

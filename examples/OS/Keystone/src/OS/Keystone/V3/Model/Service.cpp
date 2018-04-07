@@ -7,21 +7,18 @@
 
 #include "OS/Keystone/V3/Model/Service.h"
 
-namespace OS {
-namespace Keystone {
-namespace V3 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V3 { namespace Model {
 
 Service::Service()
 {
 }
 
 Service::Service(const JXXON::Json &json) :
-		id(json.get<std::shared_ptr<std::string>>("id")),
-		name(json.get<std::shared_ptr<std::string>>("name")),
-		type(json.get<std::shared_ptr<std::string>>("type")),
-		endpoints(json.get<std::shared_ptr<JXXON::List<Endpoint>>>("endpoints")),
-		links(json.get<std::shared_ptr<Links>>("links"))
+		id(json.get<decltype(id)>("id")),
+		name(json.get<decltype(name)>("name")),
+		type(json.get<decltype(type)>("type")),
+		endpoints(json.get<decltype(endpoints)>("endpoints")),
+		links(json.get<decltype(links)>("links"))
 {
 }
 
@@ -36,7 +33,4 @@ JXXON::Json Service::toJson() const
 	return json;
 }
 
-} // namespace Model
-} // namespace V3
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V3::Model

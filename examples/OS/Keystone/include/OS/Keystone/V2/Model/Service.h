@@ -13,10 +13,7 @@
 #include <JXXON/Serializable.h>
 #include <string>
 
-namespace OS {
-namespace Keystone {
-namespace V2 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V2 { namespace Model {
 
 struct Service : public JXXON::Serializable
 {
@@ -30,9 +27,6 @@ struct Service : public JXXON::Serializable
 	std::shared_ptr<JXXON::List<std::string>> endpointsLinks;
 };
 
-} // namespace Model
-} // namespace V2
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V2::Model
 
 #endif // OS_Keystone_V2_Model_Service_INCLUDED

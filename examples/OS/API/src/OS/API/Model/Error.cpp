@@ -7,18 +7,16 @@
 
 #include "OS/API/Model/Error.h"
 
-namespace OS {
-namespace API {
-namespace Model {
+namespace OS { namespace API { namespace Model {
 
 Error::Error()
 {
 }
 
 Error::Error(const JXXON::Json &json) :
-		code(json.get<std::shared_ptr<int>>("code")),
-		title(json.get<std::shared_ptr<std::string>>("title")),
-		message(json.get<std::shared_ptr<std::string>>("message"))
+		code(json.get<decltype(code)>("code")),
+		title(json.get<decltype(title)>("title")),
+		message(json.get<decltype(message)>("message"))
 {
 }
 
@@ -31,6 +29,4 @@ JXXON::Json Error::toJson() const
 	return json;
 }
 
-} // namespace Model
-} // namespace API
-} // namespace OS
+}}} // namespace OS::API::Model

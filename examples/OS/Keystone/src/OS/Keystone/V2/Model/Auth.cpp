@@ -7,20 +7,17 @@
 
 #include "OS/Keystone/V2/Model/Auth.h"
 
-namespace OS {
-namespace Keystone {
-namespace V2 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V2 { namespace Model {
 
 Auth::Auth()
 {
 }
 
 Auth::Auth(const JXXON::Json &json) :
-		tenantName(json.get<std::shared_ptr<std::string>>("tenantName")),
-		tenantId(json.get<std::shared_ptr<std::string>>("tenantId")),
-		passwordCredentials(json.get<std::shared_ptr<PasswordCredentials>>("passwordCredentials")),
-		token(json.get<std::shared_ptr<Token>>("token"))
+		tenantName(json.get<decltype(tenantName)>("tenantName")),
+		tenantId(json.get<decltype(tenantId)>("tenantId")),
+		passwordCredentials(json.get<decltype(passwordCredentials)>("passwordCredentials")),
+		token(json.get<decltype(token)>("token"))
 {
 }
 
@@ -33,7 +30,4 @@ JXXON::Json Auth::toJson() const
 	json.set("token", token);
 	return json;
 }
-} // namespace Model
-} // namespace V3
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V2::Model

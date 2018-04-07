@@ -11,10 +11,7 @@
 #include "OS/Keystone/V3/Model/User.h"
 #include <JXXON/Serializable.h>
 
-namespace OS {
-namespace Keystone {
-namespace V3 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V3 { namespace Model {
 
 struct Password : public JXXON::Serializable {
 	Password();
@@ -24,9 +21,6 @@ struct Password : public JXXON::Serializable {
 	std::shared_ptr<User> user;
 };
 
-} // namespace Model
-} // namespace V3
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V3::Model
 
 #endif // OS_Keystone_V3_Model_Password_INCLUDED

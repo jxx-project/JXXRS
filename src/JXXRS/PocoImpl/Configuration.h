@@ -14,8 +14,7 @@
 #include <Poco/Net/HTTPClientSession.h>
 #include <memory>
 
-namespace JXXRS {
-namespace PocoImpl {
+namespace JXXRS { namespace PocoImpl {
 
 class Configuration : public JXXRS::Configuration
 {
@@ -36,7 +35,6 @@ private:
 	Poco::Net::HTTPClientSession::ProxyConfig proxyConfig;
 };
 
-} // namespace PocoImpl
-} // namespace JXXRS
+}} // namespace JXXRS::PocoImpl
 
 #endif // JXXRS_PocoImpl_Configuration_INCLUDED

@@ -7,18 +7,15 @@
 
 #include "OS/Keystone/V2/Model/PasswordCredentials.h"
 
-namespace OS {
-namespace Keystone {
-namespace V2 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V2 { namespace Model {
 
 PasswordCredentials::PasswordCredentials()
 {
 }
 
 PasswordCredentials::PasswordCredentials(const JXXON::Json &json) :
-		username(json.get<std::shared_ptr<std::string>>("username")),
-		password(json.get<std::shared_ptr<std::string>>("password"))
+		username(json.get<decltype(username)>("username")),
+		password(json.get<decltype(password)>("password"))
 {
 }
 
@@ -30,7 +27,4 @@ JXXON::Json PasswordCredentials::toJson() const
 	return json;
 }
 
-} // namespace Model
-} // namespace V3
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V2::Model

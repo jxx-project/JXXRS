@@ -7,17 +7,14 @@
 
 #include "OS/Keystone/V3/Model/Password.h"
 
-namespace OS {
-namespace Keystone {
-namespace V3 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V3 { namespace Model {
 
 Password::Password()
 {
 }
 
 Password::Password(const JXXON::Json &json) :
-		user(json.get<std::shared_ptr<User>>("user"))
+		user(json.get<decltype(user)>("user"))
 {
 }
 
@@ -28,7 +25,4 @@ JXXON::Json Password::toJson() const
 	return json;
 }
 
-} // namespace Model
-} // namespace V3
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V3::Model

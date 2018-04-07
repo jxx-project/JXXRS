@@ -12,10 +12,10 @@
 #include <JXXRS/Client.h>
 #include <string>
 
-namespace OS {
-namespace API {
+namespace OS { namespace API {
 
-class Client {
+class Client
+{
 public:
 	Client(std::shared_ptr<JXXRS::Client> client);
 	std::shared_ptr<Model::Version> getVersion(const std::string& uri) const;
@@ -26,7 +26,6 @@ private:
 	std::shared_ptr<JXXRS::Client> client;
 };
 
-} // namespace API
-} // namespace OS
+}} // namespace OS::API
 
 #endif // OS_API_Client_INCLUDED

@@ -7,17 +7,14 @@
 
 #include "OS/Keystone/V3/Model/AuthResponse.h"
 
-namespace OS {
-namespace Keystone {
-namespace V3 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V3 { namespace Model {
 
 AuthResponse::AuthResponse()
 {
 }
 
 AuthResponse::AuthResponse(const JXXON::Json &json) :
-		token(json.get<std::shared_ptr<Token>>("token"))
+		token(json.get<decltype(token)>("token"))
 {
 }
 
@@ -28,7 +25,4 @@ JXXON::Json AuthResponse::toJson() const
 	return json;
 }
 
-} // namespace Model
-} // namespace V3
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V3::Model

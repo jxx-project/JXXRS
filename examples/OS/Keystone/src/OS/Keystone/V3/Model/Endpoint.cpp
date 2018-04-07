@@ -7,22 +7,19 @@
 
 #include "OS/Keystone/V3/Model/Endpoint.h"
 
-namespace OS {
-namespace Keystone {
-namespace V3 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V3 { namespace Model {
 
 Endpoint::Endpoint()
 {
 }
 
 Endpoint::Endpoint(const JXXON::Json &json) :
-		id(json.get<std::shared_ptr<std::string>>("id")),
-		interface(json.get<std::shared_ptr<std::string>>("interface")),
-		regionId(json.get<std::shared_ptr<std::string>>("region_id")),
-		serviceId(json.get<std::shared_ptr<std::string>>("service_id")),
-		url(json.get<std::shared_ptr<std::string>>("url")),
-		links(json.get<std::shared_ptr<Links>>("links"))
+		id(json.get<decltype(id)>("id")),
+		interface(json.get<decltype(interface)>("interface")),
+		regionId(json.get<decltype(regionId)>("region_id")),
+		serviceId(json.get<decltype(serviceId)>("service_id")),
+		url(json.get<decltype(url)>("url")),
+		links(json.get<decltype(links)>("links"))
 {
 }
 
@@ -38,7 +35,4 @@ JXXON::Json Endpoint::toJson() const
 	return json;
 }
 
-} // namespace Model
-} // namespace V3
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V3::Model

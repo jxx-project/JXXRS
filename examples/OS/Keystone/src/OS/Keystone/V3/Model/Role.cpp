@@ -7,19 +7,16 @@
 
 #include "OS/Keystone/V3/Model/Role.h"
 
-namespace OS {
-namespace Keystone {
-namespace V3 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V3 { namespace Model {
 
 Role::Role()
 {
 }
 
 Role::Role(const JXXON::Json &json) :
-		id(json.get<std::shared_ptr<std::string>>("id")),
-		name(json.get<std::shared_ptr<std::string>>("name")),
-		links(json.get<std::shared_ptr<Links>>("links"))
+		id(json.get<decltype(id)>("id")),
+		name(json.get<decltype(name)>("name")),
+		links(json.get<decltype(links)>("links"))
 {
 }
 
@@ -32,7 +29,4 @@ JXXON::Json Role::toJson() const
 	return json;
 }
 
-} // namespace Model
-} // namespace V3
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V3::Model

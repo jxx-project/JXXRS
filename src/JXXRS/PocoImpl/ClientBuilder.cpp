@@ -12,8 +12,7 @@
 #include <Poco/Crypto/PKCS12Container.h>
 #include <Poco/Crypto/RSAKey.h>
 
-namespace JXXRS {
-namespace PocoImpl {
+namespace JXXRS { namespace PocoImpl {
 
 ClientBuilder::ClientBuilder() :
 		connectionFactory(nullptr),
@@ -146,5 +145,4 @@ Poco::Net::HTTPClientSession::ProxyConfig ClientBuilder::createProxyConfig() con
 	return config;
 }
 
-} // namespace PocoImpl
-} // namespace JXXRS
+}} // namespace JXXRS::PocoImpl

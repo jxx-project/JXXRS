@@ -7,20 +7,17 @@
 
 #include "OS/Keystone/V2/Model/Token.h"
 
-namespace OS {
-namespace Keystone {
-namespace V2 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V2 { namespace Model {
 
 Token::Token()
 {
 }
 
 Token::Token(const JXXON::Json &json) :
-		id(json.get<std::shared_ptr<std::string>>("id")),
-		tenant(json.get<std::shared_ptr<Tenant>>("tenant")),
-		issuedAt(json.get<std::shared_ptr<std::string>>("issued_at")),
-		expires(json.get<std::shared_ptr<std::string>>("expires"))
+		id(json.get<decltype(id)>("id")),
+		tenant(json.get<decltype(tenant)>("tenant")),
+		issuedAt(json.get<decltype(issuedAt)>("issued_at")),
+		expires(json.get<decltype(expires)>("expires"))
 {
 }
 
@@ -34,7 +31,4 @@ JXXON::Json Token::toJson() const
 	return json;
 }
 
-} // namespace Model
-} // namespace V2
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V2::Model

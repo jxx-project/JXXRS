@@ -7,21 +7,18 @@
 
 #include "OS/Keystone/V2/Model/Access.h"
 
-namespace OS {
-namespace Keystone {
-namespace V2 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V2 { namespace Model {
 
 Access::Access()
 {
 }
 
 Access::Access(const JXXON::Json &json) :
-		token(json.get<std::shared_ptr<Token>>("token")),
-		serviceCatalog(json.get<std::shared_ptr<JXXON::List<Service>>>("serviceCatalog")),
-		user(json.get<std::shared_ptr<User>>("user")),
-		metadata(json.get<std::shared_ptr<Metadata>>("metadata")),
-		trust(json.get<std::shared_ptr<Trust>>("trust"))
+		token(json.get<decltype(token)>("token")),
+		serviceCatalog(json.get<decltype(serviceCatalog)>("serviceCatalog")),
+		user(json.get<decltype(user)>("user")),
+		metadata(json.get<decltype(metadata)>("metadata")),
+		trust(json.get<decltype(trust)>("trust"))
 {
 }
 
@@ -36,7 +33,4 @@ JXXON::Json Access::toJson() const
 	return json;
 }
 
-} // namespace Model
-} // namespace V3
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V2::Model

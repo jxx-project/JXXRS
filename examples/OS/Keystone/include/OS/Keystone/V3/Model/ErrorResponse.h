@@ -11,10 +11,7 @@
 #include "OS/Keystone/V3/Model/Error.h"
 #include <JXXON/Serializable.h>
 
-namespace OS {
-namespace Keystone {
-namespace V3 {
-namespace Model {
+namespace OS { namespace Keystone { namespace V3 { namespace Model {
 
 struct ErrorResponse : public JXXON::Serializable
 {
@@ -25,9 +22,6 @@ struct ErrorResponse : public JXXON::Serializable
 	std::shared_ptr<Error> error;
 };
 
-} // namespace Model
-} // namespace V3
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V3::Model
 
 #endif // OS_Keystone_V3_Model_ErrorResponse_INCLUDED
