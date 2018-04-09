@@ -10,6 +10,7 @@
 
 #include "JXXRS/ConnectionFactory.h"
 #include "JXXRS/PocoImpl/Configuration.h"
+#include "JXXRS/PocoImpl/HTTPClientSessionFactory.h"
 #include "JXXRS/PocoImpl/Session.h"
 #include <Poco/Net/Context.h>
 #include <Poco/Net/HTTPClientSession.h>
@@ -29,6 +30,9 @@ public:
 		const std::string& scheme,
 		const std::string& host,
 		std::uint16_t port) override;
+
+protected:
+	PoolingConnectionFactory(size_t maxConnections, bool keepAlive, std::unique_ptr<HTTPClientSessionFactory> httpClientSessionFactory);
 
 private:
 	struct SessionKey {
@@ -55,6 +59,7 @@ private:
 	std::mutex lock;
 	const size_t maxSessions;
 	const bool keepAlive;
+	std::unique_ptr<HTTPClientSessionFactory> httpClientSessionFactory;
 };
 
 }} // namespace JXXRS::PocoImpl

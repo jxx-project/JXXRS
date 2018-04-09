@@ -8,6 +8,7 @@
 #ifndef JXXRS_PocoImpl_Session_INCLUDED
 #define JXXRS_PocoImpl_Session_INCLUDED
 
+#include "JXXRS/PocoImpl/HTTPClientSessionFactory.h"
 #include <Poco/Net/Context.h>
 #include <Poco/Net/HTTPClientSession.h>
 #include <Poco/URI.h>
@@ -27,7 +28,8 @@ public:
 		std::uint16_t port,
 		bool keepAlive,
 		const Poco::Net::Context::Ptr sslContext,
-		const Poco::Net::HTTPClientSession::ProxyConfig& proxyConfig);
+		const Poco::Net::HTTPClientSession::ProxyConfig& proxyConfig,
+		const HTTPClientSessionFactory& httpClientSessionFactory);
 	Session(const Session& other) = delete;
 	Session(Session&& other) = delete;
 	Session& operator=(const Session& other) = delete;

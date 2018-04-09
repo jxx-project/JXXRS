@@ -13,7 +13,13 @@
 
 namespace JXXRS { namespace PocoImpl {
 
-BasicConnectionFactory::BasicConnectionFactory()
+BasicConnectionFactory::BasicConnectionFactory() :
+		httpClientSessionFactory(new HTTPClientSessionFactory)
+{
+}
+
+BasicConnectionFactory::BasicConnectionFactory(std::unique_ptr<HTTPClientSessionFactory> httpClientSessionFactory) :
+		httpClientSessionFactory(std::move(httpClientSessionFactory))
 {
 }
 
@@ -30,14 +36,14 @@ std::unique_ptr<JXXRS::Connection> BasicConnectionFactory::get(
 	auto config = dynamic_cast<const Configuration&>(configuration);
 	return std::unique_ptr<Connection>(
 		new Connection(
-			std::shared_ptr<Session>(
-				new Session(
-					scheme,
-					host,
-					port,
-					false,
-					config.getSSLContext(),
-					config.getProxyConfig()))));
+			std::make_shared<Session>(
+				scheme,
+				host,
+				port,
+				false,
+				config.getSSLContext(),
+				config.getProxyConfig(),
+				*httpClientSessionFactory)));
 }
 
 }} // namespace JXXRS::PocoImpl

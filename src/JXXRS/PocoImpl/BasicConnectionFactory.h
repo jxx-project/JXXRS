@@ -9,8 +9,7 @@
 #define JXXRS_PocoImpl_BasicConnectionFactory_INCLUDED
 
 #include "JXXRS/ConnectionFactory.h"
-#include <Poco/Net/Context.h>
-#include <Poco/Net/HTTPClientSession.h>
+#include "JXXRS/PocoImpl/HTTPClientSessionFactory.h"
 
 namespace JXXRS { namespace PocoImpl {
 
@@ -25,6 +24,12 @@ public:
 		const std::string& scheme,
 		const std::string& host,
 		std::uint16_t port) override;
+
+protected:
+	BasicConnectionFactory(std::unique_ptr<HTTPClientSessionFactory> httpClientSessionFactory);
+
+private:
+	std::unique_ptr<HTTPClientSessionFactory> httpClientSessionFactory;
 };
 
 }} // namespace JXXRS::PocoImpl

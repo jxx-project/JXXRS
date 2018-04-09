@@ -6,9 +6,7 @@
 
 
 #include "JXXRS/PocoImpl/Session.h"
-#include "JXXRS/Error.h"
-#include "Poco/Net/HTTPClientSession.h"
-#include "Poco/Net/HTTPSClientSession.h"
+#include "JXXRS/PocoImpl/HTTPClientSessionFactory.h"
 #include <stdexcept>
 
 namespace JXXRS { namespace PocoImpl {
@@ -19,17 +17,13 @@ Session::Session(
 	std::uint16_t port,
 	bool keepAlive,
 	const Poco::Net::Context::Ptr sslContext,
-	const Poco::Net::HTTPClientSession::ProxyConfig& proxyConfig) :
+	const Poco::Net::HTTPClientSession::ProxyConfig& proxyConfig,
+        const HTTPClientSessionFactory& httpClientSessionFactory) :
 		acquired(false),
 		releasedAt(std::chrono::high_resolution_clock::now()),
 		keepAlive(keepAlive),
-		httpClientSession(scheme == "http" ? new Poco::Net::HTTPClientSession(host, port) :
-						  (scheme == "https" ? new Poco::Net::HTTPSClientSession(host, port, sslContext) :
-						   nullptr))
+		httpClientSession(httpClientSessionFactory.get(scheme, host, port, sslContext))
 {
-	if (!httpClientSession) {
-		throw JXXRS::Error("JXXRS::PocoImpl::Session::Session: Unknown scheme \"" + scheme + "\"");
-	}
 	httpClientSession->setKeepAlive(keepAlive);
 	httpClientSession->setProxyConfig(proxyConfig);
 }

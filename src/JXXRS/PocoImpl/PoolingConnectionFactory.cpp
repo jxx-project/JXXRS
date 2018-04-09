@@ -11,7 +11,13 @@
 
 namespace JXXRS { namespace PocoImpl {
 
-PoolingConnectionFactory::PoolingConnectionFactory(std::size_t maxSessions, bool keepAlive) : maxSessions(maxSessions), keepAlive(keepAlive)
+PoolingConnectionFactory::PoolingConnectionFactory(std::size_t maxSessions, bool keepAlive) :
+		maxSessions(maxSessions), keepAlive(keepAlive), httpClientSessionFactory(new HTTPClientSessionFactory)
+{
+}
+
+PoolingConnectionFactory::PoolingConnectionFactory(std::size_t maxSessions, bool keepAlive, std::unique_ptr<HTTPClientSessionFactory> httpClientSessionFactory) :
+		maxSessions(maxSessions), keepAlive(keepAlive), httpClientSessionFactory(std::move(httpClientSessionFactory))
 {
 }
 
@@ -36,14 +42,14 @@ std::unique_ptr<JXXRS::Connection> PoolingConnectionFactory::get(
 	return std::unique_ptr<Connection>(
 		new Connection(
 			sessions.emplace(
-				key, std::shared_ptr<Session>(
-					new Session(
-						scheme,
-						host,
-						port,
-						keepAlive,
-						config.getSSLContext(),
-						config.getProxyConfig())))->second));
+				key, std::make_shared<Session>(
+					scheme,
+					host,
+					port,
+					keepAlive,
+					config.getSSLContext(),
+					config.getProxyConfig(),
+					*httpClientSessionFactory))->second));
 }
 
 std::size_t PoolingConnectionFactory::SessionKey::Hash::operator()(const SessionKey& key) const
