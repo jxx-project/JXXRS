@@ -16,8 +16,6 @@
 
 namespace JXXRS { namespace PocoImpl {
 
-class Connection;
-
 class HTTPClientSessionFactory
 {
 public:
