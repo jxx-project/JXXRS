@@ -31,7 +31,7 @@ std::unique_ptr<Poco::Net::HTTPClientSession> HTTPClientSessionFactory::get(
 	} else if (scheme == "https") {
 		return std::unique_ptr<Poco::Net::HTTPClientSession>(new Poco::Net::HTTPSClientSession(host, port, sslContext));
 	} else {
-		throw JXXRS::Error("JXXRS::PocoImpl::HTTPClientSessionFactory::create: Unknown scheme \"" + scheme + "\"");
+		throw JXXRS::Error("JXXRS::PocoImpl::HTTPClientSessionFactory::get: Unknown scheme \"" + scheme + "\"");
 	}
 }
 
