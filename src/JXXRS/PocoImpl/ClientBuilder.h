@@ -28,7 +28,7 @@ public:
 	virtual void property(const std::string& name, const std::string& value);
 	virtual void property(const std::string& name, int value);
 	virtual void property(const std::string& name, bool value);
-	virtual std::unique_ptr<JXXRS::Client> newClient();
+	virtual std::shared_ptr<JXXRS::Client> build();
 
 private:
 	Poco::Net::Context::Ptr createSSLContext() const;

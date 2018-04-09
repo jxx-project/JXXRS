@@ -38,9 +38,9 @@ ClientBuilder& ClientBuilder::property(const std::string& name, bool value)
 	return *this;
 }
 
-std::unique_ptr<Client> ClientBuilder::newClient()
+std::shared_ptr<Client> ClientBuilder::build()
 {
-	return pimpl->newClient();
+	return pimpl->build();
 }
 
 } // namespace JXXRS

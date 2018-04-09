@@ -28,7 +28,7 @@ public:
 	virtual ClientBuilder& property(const std::string& name, const std::string& value);
 	virtual ClientBuilder& property(const std::string& name, int value);
 	virtual ClientBuilder& property(const std::string& name, bool value);
-	virtual std::unique_ptr<Client> newClient();
+	virtual std::shared_ptr<Client> build();
 
 private:
 	std::unique_ptr<AbstractClientBuilder> pimpl;
