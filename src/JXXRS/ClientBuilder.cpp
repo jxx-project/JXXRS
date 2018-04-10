@@ -10,7 +10,7 @@
 
 namespace JXXRS {
 
-ClientBuilder::ClientBuilder() : pimpl(new PocoImpl::ClientBuilder())
+ClientBuilder::ClientBuilder() : pimpl(new PocoImpl::ClientBuilder)
 {
 }
 
@@ -41,6 +41,11 @@ ClientBuilder& ClientBuilder::property(const std::string& name, bool value)
 std::shared_ptr<Client> ClientBuilder::build()
 {
 	return pimpl->build();
+}
+
+std::shared_ptr<Client> ClientBuilder::newClient()
+{
+	return PocoImpl::ClientBuilder().build();
 }
 
 } // namespace JXXRS
