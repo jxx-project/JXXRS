@@ -24,6 +24,10 @@ Configuration::Configuration(
 {
 }
 
+Configuration::~Configuration()
+{
+}
+
 JXXRS::ConnectionFactory& Configuration::getConnectionFactory()
 {
 	return *connectionFactory;

@@ -14,6 +14,10 @@ ClientBuilder::ClientBuilder() : pimpl(new PocoImpl::ClientBuilder)
 {
 }
 
+ClientBuilder::~ClientBuilder()
+{
+}
+
 ClientBuilder& ClientBuilder::property(const std::string& name, std::shared_ptr<Configuration::Object>&& value)
 {
 	pimpl->property(name, std::move(value));
