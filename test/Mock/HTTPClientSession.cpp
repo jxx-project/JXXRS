@@ -40,13 +40,13 @@ std::istream& HTTPClientSession::receiveResponse(Poco::Net::HTTPResponse& respon
 	id << this;
 	Model::EchoResponse responseBody =
 		{
-			id.str(),
-			host,
-			port,
-			method,
-			uri,
-			requestHeaders,
-			requestStream.str()
+			id: id.str(),
+			host: host,
+			port: port,
+			method: method,
+			uri: uri,
+			requestHeaders: requestHeaders,
+			requestBody: requestStream.str()
 		};
 }
 
