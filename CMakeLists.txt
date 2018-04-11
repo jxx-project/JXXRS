@@ -19,20 +19,22 @@ find_package(JXXON REQUIRED CONFIG)
 find_package(Poco COMPONENTS Net NetSSL REQUIRED CONFIG)
 
 file(GLOB JXXRS_SRCS_G src/JXXRS/*.cpp src/JXXRS/Accessor/*.cpp src/JXXRS/PocoImpl/*.cpp)
-add_library(jxxrs ${JXXRS_SRCS_G})
+add_library(JXXRS ${JXXRS_SRCS_G})
+add_library(${PROJECT_NAME}::JXXRS ALIAS JXXRS)
+set_target_properties(JXXRS PROPERTIES OUTPUT_NAME jxxrs)
 
-target_include_directories(jxxrs PUBLIC
+target_include_directories(JXXRS PUBLIC
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src/PocoImpl>
 	$<BUILD_INTERFACE:${Poco_INCLUDE_DIRS}>
         $<INSTALL_INTERFACE:include>)
-target_link_libraries(jxxrs Poco::Net Poco::NetSSL)
+target_link_libraries(JXXRS JXXON::JXXON Poco::Net Poco::NetSSL)
 
-install(TARGETS jxxrs EXPORT JXXRSTargets
+install(TARGETS JXXRS EXPORT JXXRSTargets
 	ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} FILES_MATCHING PATTERN "*.h")
-install(EXPORT JXXRSTargets DESTINATION share/JXXRS/cmake)
+install(EXPORT JXXRSTargets NAMESPACE ${PROJECT_NAME}:: DESTINATION share/JXXRS/cmake)
 configure_file(cmake/JXXRSConfig.cmake.in JXXRSConfig.cmake @ONLY)
 write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/JXXRSConfigVersion.cmake COMPATIBILITY SameMajorVersion)
 install(FILES
