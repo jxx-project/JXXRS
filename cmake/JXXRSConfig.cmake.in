@@ -1,0 +1,3 @@
+find_package(JXXON REQUIRED CONFIG)
+find_package(Poco COMPONENTS Net NetSSL REQUIRED CONFIG)
+include(${CMAKE_CURRENT_LIST_DIR}/JXXONTargets.cmake)
