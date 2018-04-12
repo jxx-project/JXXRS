@@ -21,7 +21,7 @@ find_package(Poco COMPONENTS Net NetSSL REQUIRED CONFIG)
 file(GLOB Client_SRCS_G src/JXXRS/*.cpp src/JXXRS/Accessor/*.cpp src/JXXRS/PocoImpl/*.cpp)
 add_library(Client ${Client_SRCS_G})
 add_library(${PROJECT_NAME}::Client ALIAS Client)
-set_target_properties(Client PROPERTIES OUTPUT_NAME jxxrs)
+set_target_properties(Client PROPERTIES OUTPUT_NAME jxxrs DEBUG_POSTFIX d)
 
 target_include_directories(Client PUBLIC
 	$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
