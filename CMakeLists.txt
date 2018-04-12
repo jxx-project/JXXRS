@@ -24,11 +24,11 @@ add_library(${PROJECT_NAME}::JXXRS ALIAS JXXRS)
 set_target_properties(JXXRS PROPERTIES OUTPUT_NAME jxxrs)
 
 target_include_directories(JXXRS PUBLIC
-        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>
-        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src/PocoImpl>
+	$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+	$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>
+	$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src/PocoImpl>
 	$<BUILD_INTERFACE:${Poco_INCLUDE_DIRS}>
-        $<INSTALL_INTERFACE:include>)
+	$<INSTALL_INTERFACE:include>)
 target_link_libraries(JXXRS JXXON::JXXON Poco::Net Poco::NetSSL)
 
 install(TARGETS JXXRS EXPORT JXXRSTargets
