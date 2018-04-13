@@ -1,7 +1,7 @@
 //
 // Copyright (C) 2018 Dr. Michael Steffens
 //
-// SPDX-License-Identifier:		BSL-1.0
+// SPDX-License-Identifier:	BSL-1.0
 //
 
 
@@ -23,8 +23,8 @@ struct VersionsResponse : public JXXON::Serializable {
 
 private:
 	struct Versions {
-        Versions(const JXXON::Json &json);
-        std::shared_ptr<JXXON::List<Version>> values;
+		Versions(const JXXON::Json &json);
+		std::shared_ptr<JXXON::List<Version>> values;
 	};
 };
 

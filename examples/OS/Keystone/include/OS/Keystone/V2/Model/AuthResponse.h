@@ -1,7 +1,7 @@
 //
 // Copyright (C) 2018 Dr. Michael Steffens
 //
-// SPDX-License-Identifier:		BSL-1.0
+// SPDX-License-Identifier:	BSL-1.0
 //
 
 
@@ -22,9 +22,6 @@ struct AuthResponse : public JXXON::Serializable
 	std::shared_ptr<Access> access;
 };
 
-} // namespace Model
-} // namespace V2 
-} // namespace Keystone
-} // namespace OS
+}}}} // namespace OS::Keystone::V2::Model
 
 #endif // OS_Keystone_V2_Model_AuthResponse_INCLUDED

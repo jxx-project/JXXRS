@@ -1,7 +1,7 @@
 //
 // Copyright (C) 2018 Dr. Michael Steffens
 //
-// SPDX-License-Identifier:		BSL-1.0
+// SPDX-License-Identifier:	BSL-1.0
 //
 
 
@@ -26,5 +26,5 @@ JXXON::Json MediaType::toJson() const
 	json.set("type", type);
 	return json;
 }
-  
+
 }}} // namespace OS::API::Model
