@@ -34,7 +34,7 @@ ClientBuilder::~ClientBuilder()
 {
 }
 
-void ClientBuilder::property(const std::string& name, std::shared_ptr<JXXRS::Configuration::Object>&& value)
+void ClientBuilder::property(const std::string& name, std::shared_ptr<JXXRS::Configuration::Object> value)
 {
 	if (name == "connectionFactory") {
 		connectionFactory = std::dynamic_pointer_cast<JXXRS::ConnectionFactory>(value);

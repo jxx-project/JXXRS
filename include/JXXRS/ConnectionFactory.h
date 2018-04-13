@@ -15,7 +15,7 @@
 
 namespace JXXRS {
 
-class ConnectionFactory
+class ConnectionFactory : public Configuration::Object
 {
 public:
 	virtual ~ConnectionFactory()

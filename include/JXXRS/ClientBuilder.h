@@ -24,7 +24,7 @@ public:
 	ClientBuilder();
 	virtual ~ClientBuilder();
 
-	virtual ClientBuilder& property(const std::string& name, std::shared_ptr<Configuration::Object>&& value);
+	virtual ClientBuilder& property(const std::string& name, std::shared_ptr<Configuration::Object> value);
 	virtual ClientBuilder& property(const std::string& name, const std::string& value);
 	virtual ClientBuilder& property(const std::string& name, int value);
 	virtual ClientBuilder& property(const std::string& name, bool value);

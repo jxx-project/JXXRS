@@ -22,7 +22,7 @@ public:
 	{
 	}
 
-	virtual void property(const std::string& name, std::shared_ptr<Configuration::Object>&& value) = 0;
+	virtual void property(const std::string& name, std::shared_ptr<Configuration::Object> value) = 0;
 	virtual void property(const std::string& name, const std::string& value) = 0;
 	virtual void property(const std::string& name, int value) = 0;
 	virtual void property(const std::string& name, bool value) = 0;
