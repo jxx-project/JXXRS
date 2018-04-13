@@ -1,7 +1,7 @@
 #
 # Copyright (C) 2018 Dr. Michael Steffens
 #
-# SPDX-License-Identifier:     BSL-1.0
+# SPDX-License-Identifier:	BSL-1.0
 #
 
 file(GLOB Mock_SRCS_G Mock/*.cpp Model/*.cpp)
