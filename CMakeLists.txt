@@ -6,6 +6,7 @@
 
 cmake_minimum_required(VERSION 3.0)
 project(JXXRS VERSION 0.1.0 LANGUAGES CXX)
+
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 
@@ -13,10 +14,10 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS NO)
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
-
-find_package(JXXON REQUIRED CONFIG)
-find_package(Poco COMPONENTS Net NetSSL REQUIRED CONFIG)
+set(JXXON_FIND_VERSION 1.0.0)
+find_package(JXXON ${JXXON_FIND_VERSION} REQUIRED CONFIG)
+set(Poco_FIND_VERSION 1.6.0)
+find_package(Poco ${Poco_FIND_VERSION} COMPONENTS Net NetSSL REQUIRED CONFIG)
 
 file(GLOB Client_SRCS_G src/JXXRS/*.cpp src/JXXRS/Accessor/*.cpp src/JXXRS/PocoImpl/*.cpp)
 add_library(Client ${Client_SRCS_G})
