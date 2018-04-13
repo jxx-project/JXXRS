@@ -28,12 +28,12 @@ Configuration::~Configuration()
 {
 }
 
-JXXRS::ConnectionFactory& Configuration::getConnectionFactory()
+JXXRS::ConnectionFactory& Configuration::getConnectionFactory() const
 {
 	return *connectionFactory;
 }
 
-Poco::Net::Context::Ptr Configuration::getSSLContext()
+Poco::Net::Context::Ptr Configuration::getSSLContext() const
 {
 	return sslContext;
 }

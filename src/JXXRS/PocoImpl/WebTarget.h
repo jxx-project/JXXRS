@@ -19,7 +19,7 @@ namespace JXXRS { namespace PocoImpl {
 class WebTarget : public JXXRS::WebTarget
 {
 public:
-	WebTarget(const Poco::URI& uri, std::shared_ptr<Configuration> configuration);
+	WebTarget(const Poco::URI& uri, std::shared_ptr<const Configuration> configuration);
 	virtual ~WebTarget();
 
 	virtual JXXRS::WebTarget& path(const std::string& path) override;
@@ -28,7 +28,7 @@ public:
 
 private:
 	Poco::URI uri;
-	std::shared_ptr<Configuration> configuration;
+	std::shared_ptr<const Configuration> configuration;
 };
 
 }} // namespace JXXRS::PocoImpl

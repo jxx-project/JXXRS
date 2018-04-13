@@ -98,15 +98,25 @@ void ClientBuilder::property(const std::string& name, bool value)
 	configuration = nullptr;
 }
 
-std::shared_ptr<JXXRS::Client> ClientBuilder::build()
+std::shared_ptr<const Configuration> ClientBuilder::buildConfiguration()
 {
 	if (!connectionFactory) {
 		connectionFactory = std::make_shared<BasicConnectionFactory>();
 	}
 	if (!configuration) {
-		configuration = std::make_shared<Configuration>(connectionFactory, createSSLContext(), createProxyConfig());
+		configuration = std::make_shared<const Configuration>(connectionFactory, createSSLContext(), createProxyConfig());
 	}
-	return std::make_shared<JXXRS::PocoImpl::Client>(configuration);
+	return configuration;
+}
+
+std::shared_ptr<const JXXRS::Configuration> ClientBuilder::getConfiguration()
+{
+	return buildConfiguration();
+}
+
+std::shared_ptr<JXXRS::Client> ClientBuilder::build()
+{
+	return std::make_shared<JXXRS::PocoImpl::Client>(buildConfiguration());
 }
 
 Poco::Net::Context::Ptr ClientBuilder::createSSLContext() const

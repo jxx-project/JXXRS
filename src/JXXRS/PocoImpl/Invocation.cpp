@@ -15,7 +15,7 @@
 namespace JXXRS { namespace PocoImpl {
 
 Invocation::Builder::Builder
-(const Poco::URI& uri, std::shared_ptr<Configuration> configuration) :
+(const Poco::URI& uri, std::shared_ptr<const Configuration> configuration) :
 		uri(uri), configuration(configuration)
 {
 }
@@ -78,7 +78,7 @@ Invocation::Invocation(
 	const Poco::URI& uri,
 	const std::set<std::string> &acceptedMediaTypes,
 	const std::multimap<std::string, std::string>& headers,
-	std::shared_ptr<Configuration> configuration) :
+	std::shared_ptr<const Configuration> configuration) :
 		uri(uri),
 		request(std::unique_ptr<Request>(new Request(method, uri.getPathAndQuery(), Poco::Net::HTTPMessage::HTTP_1_1))),
 		configuration(configuration)

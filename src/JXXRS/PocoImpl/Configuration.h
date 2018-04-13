@@ -25,14 +25,14 @@ public:
 		Poco::Net::HTTPClientSession::ProxyConfig proxyConfig);
 	virtual ~Configuration();
 
-	JXXRS::ConnectionFactory& getConnectionFactory();
-	Poco::Net::Context::Ptr getSSLContext();
+	JXXRS::ConnectionFactory& getConnectionFactory() const;
+	Poco::Net::Context::Ptr getSSLContext() const;
 	const Poco::Net::HTTPClientSession::ProxyConfig& getProxyConfig() const;
 
 private:
-	std::shared_ptr<JXXRS::ConnectionFactory> connectionFactory;
-	Poco::Net::Context::Ptr sslContext;
-	Poco::Net::HTTPClientSession::ProxyConfig proxyConfig;
+	const std::shared_ptr<JXXRS::ConnectionFactory> connectionFactory;
+	const Poco::Net::Context::Ptr sslContext;
+	const Poco::Net::HTTPClientSession::ProxyConfig proxyConfig;
 };
 
 }} // namespace JXXRS::PocoImpl

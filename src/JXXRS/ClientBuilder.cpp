@@ -42,6 +42,11 @@ ClientBuilder& ClientBuilder::property(const std::string& name, bool value)
 	return *this;
 }
 
+std::shared_ptr<const Configuration> ClientBuilder::getConfiguration()
+{
+	return pimpl->getConfiguration();
+}
+
 std::shared_ptr<Client> ClientBuilder::build()
 {
 	return pimpl->build();

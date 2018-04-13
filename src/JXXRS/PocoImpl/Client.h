@@ -16,13 +16,13 @@ namespace JXXRS { namespace PocoImpl {
 class Client : public JXXRS::Client
 {
 public:
-	Client(std::shared_ptr<Configuration> configuration);
+	Client(std::shared_ptr<const Configuration> configuration);
 	virtual ~Client();
 
 	virtual std::shared_ptr<JXXRS::WebTarget> target(const std::string& uri) const;
 
 private:
-	std::shared_ptr<Configuration> configuration;
+	std::shared_ptr<const Configuration> configuration;
 };
 
 }} // namespace JXXRS::PocoImpl

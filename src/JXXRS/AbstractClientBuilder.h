@@ -26,6 +26,7 @@ public:
 	virtual void property(const std::string& name, const std::string& value) = 0;
 	virtual void property(const std::string& name, int value) = 0;
 	virtual void property(const std::string& name, bool value) = 0;
+	virtual std::shared_ptr<const Configuration> getConfiguration() = 0;
 	virtual std::shared_ptr<Client> build() = 0;
 };
 

@@ -11,7 +11,7 @@
 
 namespace JXXRS { namespace PocoImpl {
 
-WebTarget::WebTarget(const Poco::URI& uri, std::shared_ptr<Configuration> configuration) :
+WebTarget::WebTarget(const Poco::URI& uri, std::shared_ptr<const Configuration> configuration) :
 		uri(uri), configuration(configuration)
 {
 }

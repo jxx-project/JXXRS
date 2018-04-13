@@ -11,7 +11,7 @@
 
 namespace JXXRS { namespace PocoImpl {
 
-Client::Client(std::shared_ptr<Configuration> configuration) : configuration(configuration)
+Client::Client(std::shared_ptr<const Configuration> configuration) : configuration(configuration)
 {
 }
 

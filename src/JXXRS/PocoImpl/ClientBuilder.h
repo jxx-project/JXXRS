@@ -24,15 +24,17 @@ public:
 	ClientBuilder();
 	virtual ~ClientBuilder();
 
-	virtual void property(const std::string& name, std::shared_ptr<JXXRS::Configuration::Object>&& value);
-	virtual void property(const std::string& name, const std::string& value);
-	virtual void property(const std::string& name, int value);
-	virtual void property(const std::string& name, bool value);
+	virtual void property(const std::string& name, std::shared_ptr<JXXRS::Configuration::Object>&& value) override;
+	virtual void property(const std::string& name, const std::string& value) override;
+	virtual void property(const std::string& name, int value) override;
+	virtual void property(const std::string& name, bool value) override;
+	virtual std::shared_ptr<const JXXRS::Configuration> getConfiguration() override;
 	virtual std::shared_ptr<JXXRS::Client> build();
 
 private:
 	Poco::Net::Context::Ptr createSSLContext() const;
 	Poco::Net::HTTPClientSession::ProxyConfig createProxyConfig() const;
+	virtual std::shared_ptr<const Configuration> buildConfiguration();
 
 	std::shared_ptr<JXXRS::ConnectionFactory> connectionFactory;
 	Poco::URI httpProxy;
@@ -45,7 +47,7 @@ private:
 	bool tlsUseDefaultCAs;
 	std::string tlsKeyStore;
 	std::string tlsKeyPassword;
-	std::shared_ptr<Configuration> configuration;
+	std::shared_ptr<const Configuration> configuration;
 };
 
 }} // namespace JXXRS::PocoImpl

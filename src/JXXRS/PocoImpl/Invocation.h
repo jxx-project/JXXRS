@@ -23,7 +23,7 @@ class Invocation : public JXXRS::Invocation
 public:
 	class Builder : public JXXRS::Invocation::Builder {
 	public:
-		Builder(const Poco::URI& uri, std::shared_ptr<Configuration> configuration);
+		Builder(const Poco::URI& uri, std::shared_ptr<const Configuration> configuration);
 		virtual ~Builder();
 
 		virtual JXXRS::Invocation::Builder& accept(const std::string& mediaType) override;
@@ -38,7 +38,7 @@ public:
 
 	private:
 		Poco::URI uri;
-		std::shared_ptr<Configuration> configuration;
+		std::shared_ptr<const Configuration> configuration;
 		std::set<std::string> acceptedMediaTypes;
 		std::multimap<std::string, std::string> headers;
 	};
@@ -48,7 +48,7 @@ public:
 		const Poco::URI& uri,
 		const std::set<std::string>& acceptedMediaTypes,
 		const std::multimap<std::string, std::string>& headers,
-		std::shared_ptr<Configuration> configuration);
+		std::shared_ptr<const Configuration> configuration);
 	Invocation(const Invocation& other) = delete;
 	Invocation& operator=(const Invocation& other) = delete;
 	virtual ~Invocation();
@@ -59,7 +59,7 @@ private:
 	Poco::URI uri;
 	std::unique_ptr<JXXRS::Request> request;
 	std::unique_ptr<JXXRS::Entity> requestEntity;
-	std::shared_ptr<Configuration> configuration;
+	std::shared_ptr<const Configuration> configuration;
 };
 
 }} // namespace JXXRS::PocoImpl
