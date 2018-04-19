@@ -16,3 +16,10 @@ target_include_directories(clientBuilderTest PRIVATE
 target_link_libraries(clientBuilderTest
 	Mock
 	${PROJECT_NAME}::Client)
+
+add_executable(clientTest clientTest.cpp)
+target_include_directories(clientTest PRIVATE
+	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
+target_link_libraries(clientTest
+	Mock
+	${PROJECT_NAME}::Client)

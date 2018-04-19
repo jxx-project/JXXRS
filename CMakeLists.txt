@@ -56,3 +56,6 @@ add_subdirectory(test EXCLUDE_FROM_ALL)
 
 add_test(NAME ClientBuilderTest COMMAND clientBuilderTest)
 add_dependencies(check clientBuilderTest)
+
+add_test(NAME ClientTest COMMAND clientTest)
+add_dependencies(check clientTest)

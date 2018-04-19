@@ -34,7 +34,7 @@ EchoResponse::EchoResponse(
 EchoResponse::EchoResponse(const JXXON::Json &json) :
 		sessionId(json.get<decltype(sessionId)>("sessionId")),
 		host(json.get<decltype(host)>("host")),
-		port(json.get<decltype(port)>("port")),
+		port(json.get<unsigned int>("port")),
 		method(json.get<decltype(method)>("method")),
 		uri(json.get<decltype(uri)>("uri")),
 		requestHeaders(json.get<decltype(requestHeaders)>("requestHeaders")),
@@ -47,7 +47,7 @@ JXXON::Json EchoResponse::toJson() const
 	JXXON::Json json;
 	json.set("sessionId", sessionId);
 	json.set("host", host);
-	json.set("port", port);
+	json.set<unsigned int>("port", port);
 	json.set("method", method);
 	json.set("uri", uri);
 	json.set("requestHeaders", requestHeaders);
