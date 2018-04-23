@@ -12,7 +12,7 @@ namespace JXXRS { namespace PocoImpl {
 
 Response::Response(std::unique_ptr<JXXRS::Connection> connection) : connection(std::move(connection))
 {
-	in = &connection->receiveResponse(*this);
+	in = &this->connection->receiveResponse(*this);
 }
 
 Response::~Response()

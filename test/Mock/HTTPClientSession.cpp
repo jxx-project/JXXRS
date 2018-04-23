@@ -32,6 +32,7 @@ std::ostream& HTTPClientSession::sendRequest(Poco::Net::HTTPRequest& request)
 	for (auto& i : request) {
 		requestHeaders.emplace_back(Model::Header{name: i.first, value: i.second});
 	}
+	return requestStream;
 }
 
 std::istream& HTTPClientSession::receiveResponse(Poco::Net::HTTPResponse& response)
@@ -48,6 +49,8 @@ std::istream& HTTPClientSession::receiveResponse(Poco::Net::HTTPResponse& respon
 			requestHeaders: requestHeaders,
 			requestBody: requestStream.str()
 		};
+	responseStream = std::istringstream(responseBody.toJson().toString());
+	return responseStream;
 }
 
 } // namespace Mock
