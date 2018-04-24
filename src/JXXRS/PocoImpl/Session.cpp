@@ -18,7 +18,7 @@ Session::Session(
 	bool keepAlive,
 	const Poco::Net::Context::Ptr sslContext,
 	const Poco::Net::HTTPClientSession::ProxyConfig& proxyConfig,
-        const HTTPClientSessionFactory& httpClientSessionFactory) :
+		const HTTPClientSessionFactory& httpClientSessionFactory) :
 		acquired(false),
 		releasedAt(std::chrono::high_resolution_clock::now()),
 		keepAlive(keepAlive),

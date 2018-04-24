@@ -25,7 +25,7 @@ public:
 
 	static std::unique_ptr<Entity> json(const JXXON::Serializable& entity);
 	static std::unique_ptr<Entity> text(std::string&& entity);
-	static std::unique_ptr<Entity> stream(std::istream&& in);
+	static std::unique_ptr<Entity> stream(std::unique_ptr<std::istream> in);
 	virtual const std::string& getMediaType() const = 0;
 
 	friend std::ostream& operator<<(std::ostream& out, const Entity& entity);

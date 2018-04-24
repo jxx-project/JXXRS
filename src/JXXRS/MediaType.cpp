@@ -11,5 +11,6 @@ namespace JXXRS {
 
 const std::string MediaType::APPLICATION_JSON = "application/json";
 const std::string MediaType::APPLICATION_OCTET_STREAM = "application/octet-stream";
+const std::string MediaType::TEXT_PLAIN = "text/plain";
 
 } // namespace JXXRS

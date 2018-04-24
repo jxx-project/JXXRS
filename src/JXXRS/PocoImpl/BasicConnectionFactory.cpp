@@ -9,7 +9,6 @@
 #include "JXXRS/PocoImpl/Configuration.h"
 #include "JXXRS/PocoImpl/Connection.h"
 #include "JXXRS/PocoImpl/Session.h"
-#include <iostream>
 
 namespace JXXRS { namespace PocoImpl {
 

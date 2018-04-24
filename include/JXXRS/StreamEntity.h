@@ -11,6 +11,7 @@
 #include "JXXRS/Entity.h"
 #include <JXXON/Serializable.h>
 #include <istream>
+#include <memory>
 #include <ostream>
 #include <string>
 
@@ -32,9 +33,9 @@ protected:
 	virtual void writeStream(std::ostream& out) const override;
 
 private:
-	StreamEntity(std::istream&& in, const std::string& mediaType);
+	StreamEntity(std::unique_ptr<std::istream> in, const std::string& mediaType);
 
-	std::istream&& in;
+	std::unique_ptr<std::istream> in;
 	const std::string& mediaType;
 
 	friend class Entity;

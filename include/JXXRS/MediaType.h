@@ -16,6 +16,7 @@ struct MediaType
 {
 	static const std::string APPLICATION_JSON;
 	static const std::string APPLICATION_OCTET_STREAM;
+	static const std::string TEXT_PLAIN;
 };
 
 } // namespace JXXRS

@@ -6,6 +6,9 @@
 
 
 #include "Model/EchoResponse.h"
+#include <algorithm>
+#include <cstring>
+#include <stdexcept>
 
 namespace Model {
 
@@ -34,7 +37,7 @@ EchoResponse::EchoResponse(
 EchoResponse::EchoResponse(const JXXON::Json &json) :
 		sessionId(json.get<decltype(sessionId)>("sessionId")),
 		host(json.get<decltype(host)>("host")),
-		port(json.get<unsigned int>("port")),
+		port(json.get<decltype(port)>("port")),
 		method(json.get<decltype(method)>("method")),
 		uri(json.get<decltype(uri)>("uri")),
 		requestHeaders(json.get<decltype(requestHeaders)>("requestHeaders")),
@@ -47,12 +50,22 @@ JXXON::Json EchoResponse::toJson() const
 	JXXON::Json json;
 	json.set("sessionId", sessionId);
 	json.set("host", host);
-	json.set<unsigned int>("port", port);
+	json.set("port", port);
 	json.set("method", method);
 	json.set("uri", uri);
 	json.set("requestHeaders", requestHeaders);
 	json.set("requestBody", requestBody);
 	return json;
+}
+
+const Header& EchoResponse::getRequestHeader(const std::string name) const
+{
+    for (auto& i : requestHeaders) {
+        if (std::equal(name.begin(), name.end(), i.name.begin(), [](int lhs, int rhs){return std::toupper(lhs) == std::toupper(rhs);})) {
+            return i;
+        }
+    }
+    throw std::runtime_error("Request header\"" + name + "\" not found.");
 }
 
 } // namespace Model

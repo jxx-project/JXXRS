@@ -8,6 +8,7 @@
 #include "JXXRS/Entity.h"
 #include "JXXRS/JsonEntity.h"
 #include "JXXRS/StreamEntity.h"
+#include "JXXRS/TextEntity.h"
 
 namespace JXXRS {
 
@@ -24,7 +25,12 @@ std::unique_ptr<Entity> Entity::json(const JXXON::Serializable& entity)
 	return std::unique_ptr<Entity>(new JsonEntity(entity.toJson(), MediaType::APPLICATION_JSON));
 }
 
-std::unique_ptr<Entity> Entity::stream(std::istream&& in)
+std::unique_ptr<Entity> Entity::text(std::string&& entity)
+{
+	return std::unique_ptr<Entity>(new TextEntity(std::move(entity), MediaType::TEXT_PLAIN));
+}
+
+std::unique_ptr<Entity> Entity::stream(std::unique_ptr<std::istream> in)
 {
 	return std::unique_ptr<Entity>(new StreamEntity(std::move(in), MediaType::APPLICATION_OCTET_STREAM));
 }
