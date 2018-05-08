@@ -30,7 +30,7 @@ struct EchoResponse : public JXXON::Serializable
 	EchoResponse(const JXXON::Json &json);
 	virtual JXXON::Json toJson() const override;
 
-    const Header& getRequestHeader(const std::string name) const;
+	const Header& getRequestHeader(const std::string name) const;
 
 	std::string sessionId;
 	std::string host;
