@@ -21,7 +21,8 @@ namespace JXXRS { namespace PocoImpl {
 class Invocation : public JXXRS::Invocation
 {
 public:
-	class Builder : public JXXRS::Invocation::Builder {
+	class Builder : public JXXRS::Invocation::Builder
+	{
 	public:
 		Builder(const Poco::URI& uri, std::shared_ptr<const Configuration> configuration);
 		virtual ~Builder();
@@ -29,8 +30,8 @@ public:
 		virtual JXXRS::Invocation::Builder& accept(const std::string& mediaType) override;
 		virtual JXXRS::Invocation::Builder& header(const std::string& name, const std::string& value) override;
 		virtual std::unique_ptr<JXXRS::Invocation> build(const std::string& method) const override;
-		virtual std::unique_ptr<JXXRS::Invocation> build(
-			const std::string& method, std::unique_ptr<JXXRS::Entity> entity) const override;
+		virtual std::unique_ptr<JXXRS::Invocation> build(const std::string& method, std::unique_ptr<JXXRS::Entity> entity)
+			const override;
 		virtual std::unique_ptr<JXXRS::Invocation> buildGet() const override;
 		virtual std::unique_ptr<JXXRS::Invocation> buildDelete() const override;
 		virtual std::unique_ptr<JXXRS::Invocation> buildPost(std::unique_ptr<Entity> entity) const override;

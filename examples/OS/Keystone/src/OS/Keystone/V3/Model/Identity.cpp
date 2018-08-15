@@ -13,11 +13,11 @@ Identity::Identity()
 {
 }
 
-Identity::Identity(const JXXON::Json &json) :
-		methods(json.get<decltype(methods)>("methods")),
-		password(json.get<decltype(password)>("password")),
-		token(json.get<decltype(token)>("token")),
-		challengeResponse(json.get<decltype(challengeResponse)>("challenge-response"))
+Identity::Identity(const JXXON::Json& json) :
+	methods(json.get<decltype(methods)>("methods")),
+	password(json.get<decltype(password)>("password")),
+	token(json.get<decltype(token)>("token")),
+	challengeResponse(json.get<decltype(challengeResponse)>("challenge-response"))
 {
 }
 

@@ -8,11 +8,11 @@
 #ifndef OS_Keystone_V2_Model_Access_INCLUDED
 #define OS_Keystone_V2_Model_Access_INCLUDED
 
-#include "OS/Keystone/V2/Model/Token.h"
-#include "OS/Keystone/V2/Model/Service.h"
-#include "OS/Keystone/V2/Model/User.h"
 #include "OS/Keystone/V2/Model/Metadata.h"
+#include "OS/Keystone/V2/Model/Service.h"
+#include "OS/Keystone/V2/Model/Token.h"
 #include "OS/Keystone/V2/Model/Trust.h"
+#include "OS/Keystone/V2/Model/User.h"
 #include <JXXON/List.h>
 #include <JXXON/Serializable.h>
 
@@ -21,7 +21,7 @@ namespace OS { namespace Keystone { namespace V2 { namespace Model {
 struct Access : public JXXON::Serializable
 {
 	Access();
-	Access(const JXXON::Json &json);
+	Access(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<Token> token;

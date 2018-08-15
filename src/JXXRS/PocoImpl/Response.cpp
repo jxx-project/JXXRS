@@ -35,7 +35,7 @@ std::unique_ptr<std::string> Response::getHeaderString(const std::string& name) 
 
 std::unique_ptr<std::string> Response::getMediaType() const
 {
-	auto result =  std::unique_ptr<std::string>(new std::string(httpResponse.getContentType()));
+	auto result = std::unique_ptr<std::string>(new std::string(httpResponse.getContentType()));
 	if (*result == Poco::Net::HTTPMessage::UNKNOWN_CONTENT_TYPE) {
 		return nullptr;
 	}

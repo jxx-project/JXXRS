@@ -13,9 +13,10 @@
 
 namespace OS { namespace API { namespace Model {
 
-struct ErrorResponse : public JXXON::Serializable {
+struct ErrorResponse : public JXXON::Serializable
+{
 	ErrorResponse();
-	ErrorResponse(const JXXON::Json &json);
+	ErrorResponse(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<Error> error;

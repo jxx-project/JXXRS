@@ -33,7 +33,8 @@ public:
 	virtual void setKeepAlive(bool keepAlive) override;
 	virtual void setHost(const std::string& host, std::uint16_t port) override;
 
-	Poco::Net::HTTPRequest& getHTTPRequest() {
+	Poco::Net::HTTPRequest& getHTTPRequest()
+	{
 		return httpRequest;
 	}
 

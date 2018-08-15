@@ -13,9 +13,7 @@ Auth::Auth()
 {
 }
 
-Auth::Auth(const JXXON::Json &json) :
-		identity(json.get<decltype(identity)>("identity")),
-		scope(json.get<decltype(scope)>("scope"))
+Auth::Auth(const JXXON::Json& json) : identity(json.get<decltype(identity)>("identity")), scope(json.get<decltype(scope)>("scope"))
 {
 }
 

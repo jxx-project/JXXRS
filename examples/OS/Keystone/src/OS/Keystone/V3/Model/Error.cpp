@@ -6,9 +6,7 @@ Error::Error()
 {
 }
 
-Error::Error(const JXXON::Json &json) :
-		OS::API::Model::Error(json),
-		identity(json.get<decltype(identity)>("identity"))
+Error::Error(const JXXON::Json& json) : OS::API::Model::Error(json), identity(json.get<decltype(identity)>("identity"))
 {
 }
 

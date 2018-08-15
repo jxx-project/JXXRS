@@ -13,12 +13,12 @@ VersionResponse::VersionResponse()
 {
 }
 
-VersionResponse::VersionResponse(const JXXON::Json &json) :
-		version(json.get<decltype(version)>("version"))
+VersionResponse::VersionResponse(const JXXON::Json& json) : version(json.get<decltype(version)>("version"))
 {
 }
 
-JXXON::Json VersionResponse::toJson() const {
+JXXON::Json VersionResponse::toJson() const
+{
 	JXXON::Json json;
 	json.set("version", version);
 	return json;

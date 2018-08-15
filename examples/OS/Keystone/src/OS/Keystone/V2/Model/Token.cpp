@@ -13,11 +13,11 @@ Token::Token()
 {
 }
 
-Token::Token(const JXXON::Json &json) :
-		id(json.get<decltype(id)>("id")),
-		tenant(json.get<decltype(tenant)>("tenant")),
-		issuedAt(json.get<decltype(issuedAt)>("issued_at")),
-		expires(json.get<decltype(expires)>("expires"))
+Token::Token(const JXXON::Json& json) :
+	id(json.get<decltype(id)>("id")),
+	tenant(json.get<decltype(tenant)>("tenant")),
+	issuedAt(json.get<decltype(issuedAt)>("issued_at")),
+	expires(json.get<decltype(expires)>("expires"))
 {
 }
 

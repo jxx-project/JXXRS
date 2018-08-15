@@ -7,11 +7,11 @@
 
 #include "OS/API/Client.h"
 #include "OS/API/Error.h"
+#include "OS/API/Model/ErrorResponse.h"
 #include "OS/API/Model/VersionResponse.h"
 #include "OS/API/Model/VersionsResponse.h"
-#include "OS/API/Model/ErrorResponse.h"
-#include <JXXRS/Response.h>
 #include <JXXRS/MediaType.h>
+#include <JXXRS/Response.h>
 #include <JXXRS/WebTarget.h>
 
 namespace OS { namespace API {

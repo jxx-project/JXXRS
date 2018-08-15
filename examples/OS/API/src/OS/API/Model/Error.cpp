@@ -13,10 +13,10 @@ Error::Error()
 {
 }
 
-Error::Error(const JXXON::Json &json) :
-		code(json.get<decltype(code)>("code")),
-		title(json.get<decltype(title)>("title")),
-		message(json.get<decltype(message)>("message"))
+Error::Error(const JXXON::Json& json) :
+	code(json.get<decltype(code)>("code")),
+	title(json.get<decltype(title)>("title")),
+	message(json.get<decltype(message)>("message"))
 {
 }
 

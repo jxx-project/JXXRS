@@ -13,12 +13,12 @@ Endpoint::Endpoint()
 {
 }
 
-Endpoint::Endpoint(const JXXON::Json &json) :
-		id(json.get<decltype(id)>("id")),
-		region(json.get<decltype(region)>("region")),
-		adminUrl(json.get<decltype(adminUrl)>("adminURL")),
-		internalUrl(json.get<decltype(internalUrl)>("internalURL")),
-		publicUrl(json.get<decltype(publicUrl)>("publicURL"))
+Endpoint::Endpoint(const JXXON::Json& json) :
+	id(json.get<decltype(id)>("id")),
+	region(json.get<decltype(region)>("region")),
+	adminUrl(json.get<decltype(adminUrl)>("adminURL")),
+	internalUrl(json.get<decltype(internalUrl)>("internalURL")),
+	publicUrl(json.get<decltype(publicUrl)>("publicURL"))
 {
 }
 

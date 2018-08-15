@@ -10,7 +10,8 @@
 
 namespace JXXRS {
 
-PoolingConnectionFactory::PoolingConnectionFactory(std::size_t maxSessions, bool keepAlive) : pimpl(new PocoImpl::PoolingConnectionFactory(maxSessions, keepAlive))
+PoolingConnectionFactory::PoolingConnectionFactory(std::size_t maxSessions, bool keepAlive) :
+	pimpl(new PocoImpl::PoolingConnectionFactory(maxSessions, keepAlive))
 {
 }
 
@@ -19,7 +20,10 @@ PoolingConnectionFactory::~PoolingConnectionFactory()
 }
 
 std::unique_ptr<Connection> PoolingConnectionFactory::get(
-	const Configuration& configuration, const std::string& scheme, const std::string& host, std::uint16_t port)
+	const Configuration& configuration,
+	const std::string& scheme,
+	const std::string& host,
+	std::uint16_t port)
 {
 	return pimpl->get(configuration, scheme, host, port);
 }

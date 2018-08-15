@@ -6,8 +6,8 @@
 
 
 #include "Mock/HTTPClientSessionFactory.h"
-#include "Mock/HTTPClientSession.h"
 #include "JXXRS/Error.h"
+#include "Mock/HTTPClientSession.h"
 
 namespace Mock {
 

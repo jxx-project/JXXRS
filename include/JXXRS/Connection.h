@@ -10,9 +10,9 @@
 
 #include "JXXRS/Request.h"
 #include "JXXRS/Response.h"
+#include <istream>
 #include <memory>
 #include <ostream>
-#include <istream>
 
 namespace JXXRS {
 

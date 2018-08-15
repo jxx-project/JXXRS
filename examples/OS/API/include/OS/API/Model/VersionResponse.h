@@ -16,7 +16,7 @@ namespace OS { namespace API { namespace Model {
 struct VersionResponse : public JXXON::Serializable
 {
 	VersionResponse();
-	VersionResponse(const JXXON::Json &json);
+	VersionResponse(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<Version> version;

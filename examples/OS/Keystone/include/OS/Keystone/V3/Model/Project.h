@@ -18,7 +18,7 @@ namespace OS { namespace Keystone { namespace V3 { namespace Model {
 struct Project : public JXXON::Serializable
 {
 	Project();
-	Project(const JXXON::Json &json);
+	Project(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<std::string> id;

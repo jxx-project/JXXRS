@@ -29,8 +29,8 @@ public:
 	HTTPClientSession(const std::string& host, Poco::UInt16 port, Poco::Net::Context::Ptr sslContext);
 	virtual ~HTTPClientSession();
 
-	virtual std::ostream &sendRequest(Poco::Net::HTTPRequest& request);
-	virtual std::istream &receiveResponse(Poco::Net::HTTPResponse& response);
+	virtual std::ostream& sendRequest(Poco::Net::HTTPRequest& request);
+	virtual std::istream& receiveResponse(Poco::Net::HTTPResponse& response);
 
 private:
 	std::string host;

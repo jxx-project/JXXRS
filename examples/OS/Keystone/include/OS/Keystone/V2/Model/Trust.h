@@ -16,7 +16,7 @@ namespace OS { namespace Keystone { namespace V2 { namespace Model {
 struct Trust : public JXXON::Serializable
 {
 	Trust();
-	Trust(const JXXON::Json &json);
+	Trust(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<std::string> id;

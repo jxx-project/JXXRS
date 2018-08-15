@@ -16,7 +16,7 @@ namespace OS { namespace Keystone { namespace V3 { namespace Model {
 struct AuthResponse : public JXXON::Serializable
 {
 	AuthResponse();
-	AuthResponse(const JXXON::Json &json);
+	AuthResponse(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<Token> token;

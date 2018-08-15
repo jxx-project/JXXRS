@@ -16,7 +16,7 @@ namespace OS { namespace Keystone { namespace V2 { namespace Model {
 struct Tenant : public JXXON::Serializable
 {
 	Tenant();
-	Tenant(const JXXON::Json &json);
+	Tenant(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<std::string> id;

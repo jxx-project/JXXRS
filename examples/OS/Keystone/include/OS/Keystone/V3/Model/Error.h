@@ -16,7 +16,7 @@ namespace OS { namespace Keystone { namespace V3 { namespace Model {
 struct Error : public OS::API::Model::Error
 {
 	Error();
-	Error(const JXXON::Json &json);
+	Error(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<Identity> identity;

@@ -13,11 +13,11 @@ Tenant::Tenant()
 {
 }
 
-Tenant::Tenant(const JXXON::Json &json) :
-		id(json.get<decltype(id)>("id")),
-		name(json.get<decltype(name)>("name")),
-		description(json.get<decltype(description)>("description")),
-		enabled(json.get<decltype(enabled)>("enabled"))
+Tenant::Tenant(const JXXON::Json& json) :
+	id(json.get<decltype(id)>("id")),
+	name(json.get<decltype(name)>("name")),
+	description(json.get<decltype(description)>("description")),
+	enabled(json.get<decltype(enabled)>("enabled"))
 {
 }
 

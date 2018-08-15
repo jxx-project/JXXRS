@@ -16,7 +16,7 @@ namespace OS { namespace Keystone { namespace V3 { namespace Model {
 struct Domain : public JXXON::Serializable
 {
 	Domain();
-	Domain(const JXXON::Json &json);
+	Domain(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<std::string> id;

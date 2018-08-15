@@ -13,9 +13,9 @@ Scope::Scope()
 {
 }
 
-Scope::Scope(const JXXON::Json &json) :
-		domain(json.get<decltype(domain)>("domain")),
-		project(json.get<decltype(project)>("project"))
+Scope::Scope(const JXXON::Json& json) :
+	domain(json.get<decltype(domain)>("domain")),
+	project(json.get<decltype(project)>("project"))
 {
 }
 

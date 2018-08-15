@@ -13,11 +13,11 @@ Trust::Trust()
 {
 }
 
-Trust::Trust(const JXXON::Json &json) :
-		id(json.get<decltype(id)>("id")),
-		trusteeUserId(json.get<decltype(trusteeUserId)>("trustee_user_id")),
-		trustorUserId(json.get<decltype(trustorUserId)>("trustor_user_id")),
-		impersonation(json.get<decltype(impersonation)>("impersonation"))
+Trust::Trust(const JXXON::Json& json) :
+	id(json.get<decltype(id)>("id")),
+	trusteeUserId(json.get<decltype(trusteeUserId)>("trustee_user_id")),
+	trustorUserId(json.get<decltype(trustorUserId)>("trustor_user_id")),
+	impersonation(json.get<decltype(impersonation)>("impersonation"))
 {
 }
 

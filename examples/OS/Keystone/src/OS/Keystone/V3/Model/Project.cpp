@@ -13,11 +13,11 @@ Project::Project()
 {
 }
 
-Project::Project(const JXXON::Json &json) :
-		id(json.get<decltype(id)>("id")),
-		name(json.get<decltype(name)>("name")),
-		domain(json.get<decltype(domain)>("domain")),
-		links(json.get<decltype(links)>("links"))
+Project::Project(const JXXON::Json& json) :
+	id(json.get<decltype(id)>("id")),
+	name(json.get<decltype(name)>("name")),
+	domain(json.get<decltype(domain)>("domain")),
+	links(json.get<decltype(links)>("links"))
 {
 }
 

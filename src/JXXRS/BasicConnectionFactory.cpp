@@ -19,7 +19,10 @@ BasicConnectionFactory::~BasicConnectionFactory()
 }
 
 std::unique_ptr<Connection> BasicConnectionFactory::get(
-	const Configuration& configuration, const std::string& scheme, const std::string& host, std::uint16_t port)
+	const Configuration& configuration,
+	const std::string& scheme,
+	const std::string& host,
+	std::uint16_t port)
 {
 	return pimpl->get(configuration, scheme, host, port);
 }

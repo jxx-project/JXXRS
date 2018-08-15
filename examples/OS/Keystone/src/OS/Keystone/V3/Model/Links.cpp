@@ -13,8 +13,7 @@ Links::Links()
 {
 }
 
-Links::Links(const JXXON::Json &json) :
-		self(json.get<decltype(self)>("self"))
+Links::Links(const JXXON::Json& json) : self(json.get<decltype(self)>("self"))
 {
 }
 

@@ -16,7 +16,7 @@ namespace OS { namespace API { namespace Model {
 struct Link : public JXXON::Serializable
 {
 	Link();
-	Link(const JXXON::Json &json);
+	Link(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<std::string> href;

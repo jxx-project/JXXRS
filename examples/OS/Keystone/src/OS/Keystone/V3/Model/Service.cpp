@@ -13,12 +13,12 @@ Service::Service()
 {
 }
 
-Service::Service(const JXXON::Json &json) :
-		id(json.get<decltype(id)>("id")),
-		name(json.get<decltype(name)>("name")),
-		type(json.get<decltype(type)>("type")),
-		endpoints(json.get<decltype(endpoints)>("endpoints")),
-		links(json.get<decltype(links)>("links"))
+Service::Service(const JXXON::Json& json) :
+	id(json.get<decltype(id)>("id")),
+	name(json.get<decltype(name)>("name")),
+	type(json.get<decltype(type)>("type")),
+	endpoints(json.get<decltype(endpoints)>("endpoints")),
+	links(json.get<decltype(links)>("links"))
 {
 }
 

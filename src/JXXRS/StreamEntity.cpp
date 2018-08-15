@@ -9,8 +9,7 @@
 
 namespace JXXRS {
 
-StreamEntity::StreamEntity(std::unique_ptr<std::istream> in, const std::string& mediaType) :
-		in(std::move(in)), mediaType(mediaType)
+StreamEntity::StreamEntity(std::unique_ptr<std::istream> in, const std::string& mediaType) : in(std::move(in)), mediaType(mediaType)
 {
 }
 
@@ -18,7 +17,8 @@ StreamEntity::~StreamEntity()
 {
 }
 
-const std::string& StreamEntity::getMediaType() const {
+const std::string& StreamEntity::getMediaType() const
+{
 	return mediaType;
 }
 

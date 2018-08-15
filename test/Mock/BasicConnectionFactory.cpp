@@ -11,7 +11,7 @@
 namespace Mock {
 
 BasicConnectionFactory::BasicConnectionFactory() :
-		JXXRS::PocoImpl::BasicConnectionFactory(std::unique_ptr<HTTPClientSessionFactory>(new HTTPClientSessionFactory))
+	JXXRS::PocoImpl::BasicConnectionFactory(std::unique_ptr<HTTPClientSessionFactory>(new HTTPClientSessionFactory))
 {
 }
 

@@ -13,9 +13,10 @@
 
 namespace OS { namespace Keystone { namespace V3 { namespace Model {
 
-struct Password : public JXXON::Serializable {
+struct Password : public JXXON::Serializable
+{
 	Password();
-	Password(const JXXON::Json &json);
+	Password(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<User> user;

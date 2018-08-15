@@ -16,7 +16,7 @@ namespace OS { namespace API { namespace Model {
 struct Error : public JXXON::Serializable
 {
 	Error();
-	Error(const JXXON::Json &json);
+	Error(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<int> code;

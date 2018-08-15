@@ -13,8 +13,7 @@ AuthRequest::AuthRequest()
 {
 }
 
-AuthRequest::AuthRequest(const JXXON::Json &json) :
-		auth(json.get<decltype(auth)>("auth"))
+AuthRequest::AuthRequest(const JXXON::Json& json) : auth(json.get<decltype(auth)>("auth"))
 {
 }
 

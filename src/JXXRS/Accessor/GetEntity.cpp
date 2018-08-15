@@ -7,12 +7,11 @@
 
 #include "JXXRS/Response.h"
 
-namespace JXXRS {
-namespace Accessor {
+namespace JXXRS { namespace Accessor {
 
 template<typename T>
-GetEntity<T, typename std::enable_if<!std::is_base_of<JXXON::Serializable, T>::value>::type>::GetEntity(
-	const Response& response) : response(response)
+GetEntity<T, typename std::enable_if<!std::is_base_of<JXXON::Serializable, T>::value>::type>::GetEntity(const Response& response) :
+	response(response)
 {
 }
 
@@ -35,5 +34,4 @@ std::istream& GetEntity<std::istream&>::operator()() const
 template GetEntity<std::istream&>::GetEntity(const Response& response);
 template std::istream& GetEntity<std::istream&>::operator()() const;
 
-} // namespace Accessor
-} // namespace JXXRS
+}} // namespace JXXRS::Accessor

@@ -13,13 +13,13 @@ VersionsResponse::VersionsResponse()
 {
 }
 
-VersionsResponse::VersionsResponse(const JXXON::Json &json)
+VersionsResponse::VersionsResponse(const JXXON::Json& json)
 {
 	try {
-        versions = json.get<std::shared_ptr<JXXON::List<Version>>>("versions");
+		versions = json.get<std::shared_ptr<JXXON::List<Version>>>("versions");
 	} catch (...) {
-        // The keystone anomaly: Version objects are wrapped in a values array.
-        versions = json.get<std::shared_ptr<Versions>>("versions")->values;
+		// The keystone anomaly: Version objects are wrapped in a values array.
+		versions = json.get<std::shared_ptr<Versions>>("versions")->values;
 	}
 }
 
@@ -31,8 +31,7 @@ JXXON::Json VersionsResponse::toJson() const
 	return json;
 }
 
-VersionsResponse::Versions::Versions(const JXXON::Json &json) :
-		values(json.get<decltype(values)>("values"))
+VersionsResponse::Versions::Versions(const JXXON::Json& json) : values(json.get<decltype(values)>("values"))
 {
 }
 

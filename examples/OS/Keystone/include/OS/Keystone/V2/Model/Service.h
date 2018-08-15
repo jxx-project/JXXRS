@@ -18,7 +18,7 @@ namespace OS { namespace Keystone { namespace V2 { namespace Model {
 struct Service : public JXXON::Serializable
 {
 	Service();
-	Service(const JXXON::Json &json);
+	Service(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<std::string> type;

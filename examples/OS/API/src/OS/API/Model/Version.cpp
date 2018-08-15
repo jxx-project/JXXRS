@@ -13,12 +13,12 @@ Version::Version()
 {
 }
 
-Version::Version(const JXXON::Json &json) :
-		id(json.get<decltype(id)>("id")),
-		status(json.get<decltype(status)>("status")),
-		updated(json.get<decltype(updated)>("updated")),
-		links(json.get<decltype(links)>("links")),
-		mediaTypes(json.get<decltype(mediaTypes)>("media-types"))
+Version::Version(const JXXON::Json& json) :
+	id(json.get<decltype(id)>("id")),
+	status(json.get<decltype(status)>("status")),
+	updated(json.get<decltype(updated)>("updated")),
+	links(json.get<decltype(links)>("links")),
+	mediaTypes(json.get<decltype(mediaTypes)>("media-types"))
 {
 }
 

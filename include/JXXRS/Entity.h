@@ -8,12 +8,12 @@
 #ifndef JXXRS_Entity_INCLUDED
 #define JXXRS_Entity_INCLUDED
 
-#include <JXXON/Serializable.h>
 #include "JXXRS/MediaType.h"
-#include <memory>
-#include <string>
+#include <JXXON/Serializable.h>
 #include <istream>
+#include <memory>
 #include <ostream>
+#include <string>
 
 namespace JXXRS {
 
@@ -31,7 +31,6 @@ public:
 	friend std::ostream& operator<<(std::ostream& out, const Entity& entity);
 
 protected:
-
 	virtual void writeStream(std::ostream& out) const = 0;
 };
 

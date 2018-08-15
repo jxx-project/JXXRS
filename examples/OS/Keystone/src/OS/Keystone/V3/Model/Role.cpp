@@ -13,10 +13,10 @@ Role::Role()
 {
 }
 
-Role::Role(const JXXON::Json &json) :
-		id(json.get<decltype(id)>("id")),
-		name(json.get<decltype(name)>("name")),
-		links(json.get<decltype(links)>("links"))
+Role::Role(const JXXON::Json& json) :
+	id(json.get<decltype(id)>("id")),
+	name(json.get<decltype(name)>("name")),
+	links(json.get<decltype(links)>("links"))
 {
 }
 

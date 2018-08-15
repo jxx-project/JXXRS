@@ -17,7 +17,7 @@ namespace OS { namespace Keystone { namespace V3 { namespace Model {
 struct Endpoint : public JXXON::Serializable
 {
 	Endpoint();
-	Endpoint(const JXXON::Json &json);
+	Endpoint(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<std::string> id;

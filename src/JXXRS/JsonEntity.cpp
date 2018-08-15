@@ -9,8 +9,7 @@
 
 namespace JXXRS {
 
-JsonEntity::JsonEntity(JXXON::Json&& json, const std::string& mediaType) :
-		entity(std::move(json)), mediaType(mediaType)
+JsonEntity::JsonEntity(JXXON::Json&& json, const std::string& mediaType) : entity(std::move(json)), mediaType(mediaType)
 {
 }
 

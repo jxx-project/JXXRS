@@ -8,9 +8,9 @@
 #ifndef OS_Keystone_V3_Model_Identity_INCLUDED
 #define OS_Keystone_V3_Model_Identity_INCLUDED
 
+#include "OS/Keystone/V3/Model/ChallengeResponse.h"
 #include "OS/Keystone/V3/Model/Password.h"
 #include "OS/Keystone/V3/Model/Token.h"
-#include "OS/Keystone/V3/Model/ChallengeResponse.h"
 #include <JXXON/Serializable.h>
 #include <string>
 
@@ -19,7 +19,7 @@ namespace OS { namespace Keystone { namespace V3 { namespace Model {
 struct Identity : public JXXON::Serializable
 {
 	Identity();
-	Identity(const JXXON::Json &json);
+	Identity(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<JXXON::List<std::string>> methods;

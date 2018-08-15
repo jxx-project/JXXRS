@@ -13,8 +13,7 @@ Role::Role()
 {
 }
 
-Role::Role(const JXXON::Json &json) :
-		name(json.get<decltype(name)>("name"))
+Role::Role(const JXXON::Json& json) : name(json.get<decltype(name)>("name"))
 {
 }
 

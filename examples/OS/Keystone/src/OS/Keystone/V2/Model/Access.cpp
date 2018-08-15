@@ -13,12 +13,12 @@ Access::Access()
 {
 }
 
-Access::Access(const JXXON::Json &json) :
-		token(json.get<decltype(token)>("token")),
-		serviceCatalog(json.get<decltype(serviceCatalog)>("serviceCatalog")),
-		user(json.get<decltype(user)>("user")),
-		metadata(json.get<decltype(metadata)>("metadata")),
-		trust(json.get<decltype(trust)>("trust"))
+Access::Access(const JXXON::Json& json) :
+	token(json.get<decltype(token)>("token")),
+	serviceCatalog(json.get<decltype(serviceCatalog)>("serviceCatalog")),
+	user(json.get<decltype(user)>("user")),
+	metadata(json.get<decltype(metadata)>("metadata")),
+	trust(json.get<decltype(trust)>("trust"))
 {
 }
 

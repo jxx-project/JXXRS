@@ -14,9 +14,9 @@
 
 namespace JXXRS { namespace PocoImpl {
 
-Invocation::Builder::Builder
-(const Poco::URI& uri, std::shared_ptr<const Configuration> configuration) :
-		uri(uri), configuration(configuration)
+Invocation::Builder::Builder(const Poco::URI& uri, std::shared_ptr<const Configuration> configuration) :
+	uri(uri),
+	configuration(configuration)
 {
 }
 
@@ -42,8 +42,7 @@ std::unique_ptr<JXXRS::Invocation> Invocation::Builder::build(const std::string&
 	return invocation;
 }
 
-std::unique_ptr<JXXRS::Invocation> Invocation::Builder::build(
-	const std::string& method, std::unique_ptr<Entity> entity) const
+std::unique_ptr<JXXRS::Invocation> Invocation::Builder::build(const std::string& method, std::unique_ptr<Entity> entity) const
 {
 	std::unique_ptr<Invocation> invocation(new Invocation(method, uri, acceptedMediaTypes, headers, configuration));
 	invocation->request->setContentType(entity->getMediaType());
@@ -76,12 +75,12 @@ std::unique_ptr<JXXRS::Invocation> Invocation::Builder::buildPut(std::unique_ptr
 Invocation::Invocation(
 	const std::string& method,
 	const Poco::URI& uri,
-	const std::set<std::string> &acceptedMediaTypes,
+	const std::set<std::string>& acceptedMediaTypes,
 	const std::multimap<std::string, std::string>& headers,
 	std::shared_ptr<const Configuration> configuration) :
-		uri(uri),
-		request(std::unique_ptr<Request>(new Request(method, uri.getPathAndQuery(), Poco::Net::HTTPMessage::HTTP_1_1))),
-		configuration(configuration)
+	uri(uri),
+	request(std::unique_ptr<Request>(new Request(method, uri.getPathAndQuery(), Poco::Net::HTTPMessage::HTTP_1_1))),
+	configuration(configuration)
 {
 	for (auto i = acceptedMediaTypes.begin(); i != acceptedMediaTypes.end(); ++i) {
 		request->addHeader("Accept", *i);

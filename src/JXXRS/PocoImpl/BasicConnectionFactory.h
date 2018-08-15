@@ -19,11 +19,8 @@ public:
 	BasicConnectionFactory();
 	virtual ~BasicConnectionFactory();
 
-	virtual std::unique_ptr<JXXRS::Connection> get(
-		const JXXRS::Configuration& configuration,
-		const std::string& scheme,
-		const std::string& host,
-		std::uint16_t port) override;
+	virtual std::unique_ptr<JXXRS::Connection>
+	get(const JXXRS::Configuration& configuration, const std::string& scheme, const std::string& host, std::uint16_t port) override;
 
 protected:
 	BasicConnectionFactory(std::unique_ptr<HTTPClientSessionFactory> httpClientSessionFactory);

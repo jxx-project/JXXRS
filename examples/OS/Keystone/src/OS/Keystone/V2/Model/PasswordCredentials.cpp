@@ -13,9 +13,9 @@ PasswordCredentials::PasswordCredentials()
 {
 }
 
-PasswordCredentials::PasswordCredentials(const JXXON::Json &json) :
-		username(json.get<decltype(username)>("username")),
-		password(json.get<decltype(password)>("password"))
+PasswordCredentials::PasswordCredentials(const JXXON::Json& json) :
+	username(json.get<decltype(username)>("username")),
+	password(json.get<decltype(password)>("password"))
 {
 }
 

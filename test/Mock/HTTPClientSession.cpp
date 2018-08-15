@@ -10,13 +10,13 @@
 
 namespace Mock {
 
-HTTPClientSession::HTTPClientSession(const std::string& host, Poco::UInt16 port) :
-		host(host), port(port)
+HTTPClientSession::HTTPClientSession(const std::string& host, Poco::UInt16 port) : host(host), port(port)
 {
 }
 
 HTTPClientSession::HTTPClientSession(const std::string& host, Poco::UInt16 port, Poco::Net::Context::Ptr sslContext) :
-		host(host), port(port)
+	host(host),
+	port(port)
 {
 }
 
@@ -30,7 +30,7 @@ std::ostream& HTTPClientSession::sendRequest(Poco::Net::HTTPRequest& request)
 	uri = request.getURI();
 	requestHeaders.clear();
 	for (auto& i : request) {
-		requestHeaders.emplace_back(Model::Header{name: i.first, value: i.second});
+		requestHeaders.emplace_back(Model::Header{name : i.first, value : i.second});
 	}
 	return requestStream;
 }
@@ -39,16 +39,15 @@ std::istream& HTTPClientSession::receiveResponse(Poco::Net::HTTPResponse& respon
 {
 	std::ostringstream id;
 	id << this;
-	Model::EchoResponse responseBody =
-		{
-			id: id.str(),
-			host: host,
-			port: port,
-			method: method,
-			uri: uri,
-			requestHeaders: requestHeaders,
-			requestBody: requestStream.str()
-		};
+	Model::EchoResponse responseBody = {
+		id : id.str(),
+		host : host,
+		port : port,
+		method : method,
+		uri : uri,
+		requestHeaders : requestHeaders,
+		requestBody : requestStream.str()
+	};
 	responseStream = std::istringstream(responseBody.toJson().toString());
 	return responseStream;
 }

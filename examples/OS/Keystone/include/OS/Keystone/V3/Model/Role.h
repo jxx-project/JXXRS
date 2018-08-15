@@ -17,7 +17,7 @@ namespace OS { namespace Keystone { namespace V3 { namespace Model {
 struct Role : public JXXON::Serializable
 {
 	Role();
-	Role(const JXXON::Json &json);
+	Role(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<std::string> id;

@@ -17,7 +17,7 @@ namespace OS { namespace Keystone { namespace V2 { namespace Model {
 struct Metadata : public JXXON::Serializable
 {
 	Metadata();
-	Metadata(const JXXON::Json &json);
+	Metadata(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<int> isAdmin;

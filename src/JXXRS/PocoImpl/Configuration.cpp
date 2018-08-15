@@ -7,8 +7,8 @@
 
 #include "JXXRS/Configuration.h"
 #include "JXXRS/PocoImpl/BasicConnectionFactory.h"
-#include "JXXRS/PocoImpl/PoolingConnectionFactory.h"
 #include "JXXRS/PocoImpl/Client.h"
+#include "JXXRS/PocoImpl/PoolingConnectionFactory.h"
 #include <Poco/Crypto/PKCS12Container.h>
 #include <Poco/Crypto/RSAKey.h>
 
@@ -18,9 +18,9 @@ Configuration::Configuration(
 	std::shared_ptr<JXXRS::ConnectionFactory> connectionFactory,
 	Poco::Net::Context::Ptr sslContext,
 	Poco::Net::HTTPClientSession::ProxyConfig proxyConfig) :
-		connectionFactory(connectionFactory),
-		sslContext(sslContext),
-		proxyConfig(proxyConfig)
+	connectionFactory(connectionFactory),
+	sslContext(sslContext),
+	proxyConfig(proxyConfig)
 {
 }
 

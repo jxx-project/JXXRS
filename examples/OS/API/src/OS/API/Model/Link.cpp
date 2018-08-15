@@ -13,10 +13,10 @@ Link::Link()
 {
 }
 
-Link::Link(const JXXON::Json &json) :
-		href(json.get<decltype(href)>("href")),
-		rel(json.get<decltype(rel)>("rel")),
-		type(json.get<decltype(type)>("type"))
+Link::Link(const JXXON::Json& json) :
+	href(json.get<decltype(href)>("href")),
+	rel(json.get<decltype(rel)>("rel")),
+	type(json.get<decltype(type)>("type"))
 {
 }
 

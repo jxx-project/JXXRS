@@ -13,17 +13,17 @@ Token::Token()
 {
 }
 
-Token::Token(const JXXON::Json &json) :
-		id(json.get<decltype(id)>("id")),
-		issuedAt(json.get<decltype(issuedAt)>("issued_at")),
-		expiresAt(json.get<decltype(expiresAt)>("expires_at")),
-		methods(json.get<decltype(methods)>("methods")),
-		user(json.get<decltype(user)>("user")),
-		domain(json.get<decltype(domain)>("domain")),
-		project(json.get<decltype(project)>("project")),
-		endpoints(json.get<decltype(endpoints)>("endpoints")),
-		catalog(json.get<decltype(catalog)>("catalog")),
-		roles(json.get<decltype(roles)>("roles"))
+Token::Token(const JXXON::Json& json) :
+	id(json.get<decltype(id)>("id")),
+	issuedAt(json.get<decltype(issuedAt)>("issued_at")),
+	expiresAt(json.get<decltype(expiresAt)>("expires_at")),
+	methods(json.get<decltype(methods)>("methods")),
+	user(json.get<decltype(user)>("user")),
+	domain(json.get<decltype(domain)>("domain")),
+	project(json.get<decltype(project)>("project")),
+	endpoints(json.get<decltype(endpoints)>("endpoints")),
+	catalog(json.get<decltype(catalog)>("catalog")),
+	roles(json.get<decltype(roles)>("roles"))
 {
 }
 

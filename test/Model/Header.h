@@ -17,7 +17,7 @@ struct Header : public JXXON::Serializable
 {
 	Header();
 	Header(const std::string& name, const std::string& value);
-	Header(const JXXON::Json &json);
+	Header(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::string name;

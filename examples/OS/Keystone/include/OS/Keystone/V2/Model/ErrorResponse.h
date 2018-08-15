@@ -16,7 +16,7 @@ namespace OS { namespace Keystone { namespace V2 { namespace Model {
 struct ErrorResponse : public JXXON::Serializable
 {
 	ErrorResponse();
-	ErrorResponse(const JXXON::Json &json);
+	ErrorResponse(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<OS::API::Model::Error> error;

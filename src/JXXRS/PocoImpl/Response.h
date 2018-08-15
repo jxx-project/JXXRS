@@ -7,9 +7,9 @@
 #ifndef JXXRS_PocoImpl_Response_INCLUDED
 #define JXXRS_PocoImpl_Response_INCLUDED
 
-#include <JXXON/Serializable.h>
 #include "JXXRS/Connection.h"
 #include "JXXRS/Response.h"
+#include <JXXON/Serializable.h>
 #include <Poco/Net/HTTPResponse.h>
 #include <memory>
 #include <string>
@@ -32,10 +32,12 @@ public:
 	virtual std::unique_ptr<std::string> getHeaderString(const std::string& name) const override;
 	virtual std::unique_ptr<std::string> getMediaType() const override;
 
-	virtual std::istream& getStream() const {
+	virtual std::istream& getStream() const
+	{
 		return *in;
 	}
-	Poco::Net::HTTPResponse& getHTTPResponse() {
+	Poco::Net::HTTPResponse& getHTTPResponse()
+	{
 		return httpResponse;
 	}
 

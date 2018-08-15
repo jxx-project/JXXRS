@@ -13,8 +13,7 @@ ErrorResponse::ErrorResponse()
 {
 }
 
-ErrorResponse::ErrorResponse(const JXXON::Json &json) :
-		error(json.get<decltype(error)>("error"))
+ErrorResponse::ErrorResponse(const JXXON::Json& json) : error(json.get<decltype(error)>("error"))
 {
 }
 

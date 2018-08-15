@@ -16,7 +16,7 @@ namespace OS { namespace API { namespace Model {
 struct MediaType : public JXXON::Serializable
 {
 	MediaType();
-	MediaType(const JXXON::Json &json);
+	MediaType(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<std::string> base;

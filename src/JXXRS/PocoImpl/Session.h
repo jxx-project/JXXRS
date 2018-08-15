@@ -12,8 +12,8 @@
 #include <Poco/Net/Context.h>
 #include <Poco/Net/HTTPClientSession.h>
 #include <Poco/URI.h>
-#include <memory>
 #include <chrono>
+#include <memory>
 
 namespace JXXRS { namespace PocoImpl {
 
@@ -40,7 +40,8 @@ public:
 	void release();
 	bool inUse() const;
 	bool releasedAfter(const Session& other) const;
-	Poco::Net::HTTPClientSession& getHTTPClientSession() {
+	Poco::Net::HTTPClientSession& getHTTPClientSession()
+	{
 		return *httpClientSession;
 	}
 

@@ -13,9 +13,9 @@ Tenants::Tenants()
 {
 }
 
-Tenants::Tenants(const JXXON::Json &json) :
-		tenants(json.get<decltype(tenants)>("tenants")),
-		tenantsLinks(json.get<decltype(tenantsLinks)>("tenants_links"))
+Tenants::Tenants(const JXXON::Json& json) :
+	tenants(json.get<decltype(tenants)>("tenants")),
+	tenantsLinks(json.get<decltype(tenantsLinks)>("tenants_links"))
 {
 }
 

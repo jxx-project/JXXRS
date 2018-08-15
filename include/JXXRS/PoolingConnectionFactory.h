@@ -19,11 +19,8 @@ public:
 	PoolingConnectionFactory(size_t maxConnections = 20, bool keepAlive = true);
 	virtual ~PoolingConnectionFactory();
 
-	virtual std::unique_ptr<Connection> get(
-		const Configuration& configuration,
-		const std::string& scheme,
-		const std::string& host,
-		std::uint16_t port) override;
+	virtual std::unique_ptr<Connection>
+	get(const Configuration& configuration, const std::string& scheme, const std::string& host, std::uint16_t port) override;
 
 private:
 	std::unique_ptr<ConnectionFactory> pimpl;

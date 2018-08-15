@@ -13,8 +13,7 @@ AuthResponse::AuthResponse()
 {
 }
 
-AuthResponse::AuthResponse(const JXXON::Json &json) :
-		token(json.get<decltype(token)>("token"))
+AuthResponse::AuthResponse(const JXXON::Json& json) : token(json.get<decltype(token)>("token"))
 {
 }
 

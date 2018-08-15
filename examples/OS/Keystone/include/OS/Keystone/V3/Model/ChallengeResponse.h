@@ -16,7 +16,7 @@ namespace OS { namespace Keystone { namespace V3 { namespace Model {
 struct ChallengeResponse : public JXXON::Serializable
 {
 	ChallengeResponse();
-	ChallengeResponse(const JXXON::Json &json);
+	ChallengeResponse(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<std::string> challenge;

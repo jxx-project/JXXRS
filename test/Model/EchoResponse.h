@@ -27,7 +27,7 @@ struct EchoResponse : public JXXON::Serializable
 		const std::string& uri,
 		const JXXON::List<Header>& requestHeaders,
 		const std::string& requestBody);
-	EchoResponse(const JXXON::Json &json);
+	EchoResponse(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	const Header& getRequestHeader(const std::string name) const;

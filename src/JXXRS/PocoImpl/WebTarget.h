@@ -8,8 +8,8 @@
 #ifndef JXXRS_PocoImpl_WebTarget_INCLUDED
 #define JXXRS_PocoImpl_WebTarget_INCLUDED
 
-#include "JXXRS/PocoImpl/Configuration.h"
 #include "JXXRS/Invocation.h"
+#include "JXXRS/PocoImpl/Configuration.h"
 #include "JXXRS/WebTarget.h"
 #include <Poco/URI.h>
 #include <memory>

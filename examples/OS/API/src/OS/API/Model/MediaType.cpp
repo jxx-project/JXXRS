@@ -13,9 +13,7 @@ MediaType::MediaType()
 {
 }
 
-MediaType::MediaType(const JXXON::Json &json) :
-		base(json.get<decltype(base)>("base")),
-		type(json.get<decltype(type)>("type"))
+MediaType::MediaType(const JXXON::Json& json) : base(json.get<decltype(base)>("base")), type(json.get<decltype(type)>("type"))
 {
 }
 

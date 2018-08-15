@@ -12,11 +12,13 @@
 namespace JXXRS { namespace PocoImpl {
 
 WebTarget::WebTarget(const Poco::URI& uri, std::shared_ptr<const Configuration> configuration) :
-		uri(uri), configuration(configuration)
+	uri(uri),
+	configuration(configuration)
 {
 }
 
-WebTarget::~WebTarget() {
+WebTarget::~WebTarget()
+{
 }
 
 JXXRS::WebTarget& WebTarget::path(const std::string& path)
@@ -34,8 +36,7 @@ JXXRS::WebTarget& WebTarget::queryParam(const std::string& name, const std::stri
 
 std::unique_ptr<JXXRS::Invocation::Builder> WebTarget::request()
 {
-	return std::unique_ptr<JXXRS::Invocation::Builder>(
-		new JXXRS::PocoImpl::Invocation::Builder(uri, configuration));
+	return std::unique_ptr<JXXRS::Invocation::Builder>(new JXXRS::PocoImpl::Invocation::Builder(uri, configuration));
 }
 
 }} // namespace JXXRS::PocoImpl

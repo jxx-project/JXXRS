@@ -13,13 +13,13 @@ Endpoint::Endpoint()
 {
 }
 
-Endpoint::Endpoint(const JXXON::Json &json) :
-		id(json.get<decltype(id)>("id")),
-		interface(json.get<decltype(interface)>("interface")),
-		regionId(json.get<decltype(regionId)>("region_id")),
-		serviceId(json.get<decltype(serviceId)>("service_id")),
-		url(json.get<decltype(url)>("url")),
-		links(json.get<decltype(links)>("links"))
+Endpoint::Endpoint(const JXXON::Json& json) :
+	id(json.get<decltype(id)>("id")),
+	interface(json.get<decltype(interface)>("interface")),
+	regionId(json.get<decltype(regionId)>("region_id")),
+	serviceId(json.get<decltype(serviceId)>("service_id")),
+	url(json.get<decltype(url)>("url")),
+	links(json.get<decltype(links)>("links"))
 {
 }
 

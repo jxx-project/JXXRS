@@ -13,8 +13,7 @@ Password::Password()
 {
 }
 
-Password::Password(const JXXON::Json &json) :
-		user(json.get<decltype(user)>("user"))
+Password::Password(const JXXON::Json& json) : user(json.get<decltype(user)>("user"))
 {
 }
 

@@ -19,7 +19,7 @@ namespace OS { namespace API { namespace Model {
 struct Version : public JXXON::Serializable
 {
 	Version();
-	Version(const JXXON::Json &json);
+	Version(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<std::string> id;

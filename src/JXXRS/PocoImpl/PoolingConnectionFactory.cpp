@@ -12,12 +12,19 @@
 namespace JXXRS { namespace PocoImpl {
 
 PoolingConnectionFactory::PoolingConnectionFactory(std::size_t maxSessions, bool keepAlive) :
-		maxSessions(maxSessions), keepAlive(keepAlive), httpClientSessionFactory(new HTTPClientSessionFactory)
+	maxSessions(maxSessions),
+	keepAlive(keepAlive),
+	httpClientSessionFactory(new HTTPClientSessionFactory)
 {
 }
 
-PoolingConnectionFactory::PoolingConnectionFactory(std::size_t maxSessions, bool keepAlive, std::unique_ptr<HTTPClientSessionFactory> httpClientSessionFactory) :
-		maxSessions(maxSessions), keepAlive(keepAlive), httpClientSessionFactory(std::move(httpClientSessionFactory))
+PoolingConnectionFactory::PoolingConnectionFactory(
+	std::size_t maxSessions,
+	bool keepAlive,
+	std::unique_ptr<HTTPClientSessionFactory> httpClientSessionFactory) :
+	maxSessions(maxSessions),
+	keepAlive(keepAlive),
+	httpClientSessionFactory(std::move(httpClientSessionFactory))
 {
 }
 
@@ -26,7 +33,10 @@ PoolingConnectionFactory::~PoolingConnectionFactory()
 }
 
 std::unique_ptr<JXXRS::Connection> PoolingConnectionFactory::get(
-	const JXXRS::Configuration& configuration, const std::string& scheme, const std::string& host, std::uint16_t port)
+	const JXXRS::Configuration& configuration,
+	const std::string& scheme,
+	const std::string& host,
+	std::uint16_t port)
 {
 	SessionKey key(configuration, scheme, host, port);
 	std::lock_guard<std::mutex> guard(lock);
@@ -39,22 +49,19 @@ std::unique_ptr<JXXRS::Connection> PoolingConnectionFactory::get(
 		}
 	}
 	auto config = dynamic_cast<const Configuration&>(configuration);
-	return std::unique_ptr<Connection>(
-		new Connection(
-			sessions.emplace(
-				key, std::make_shared<Session>(
-					scheme,
-					host,
-					port,
-					keepAlive,
-					config.getSSLContext(),
-					config.getProxyConfig(),
-					*httpClientSessionFactory))->second));
+	return std::unique_ptr<Connection>(new Connection(
+		sessions
+			.emplace(
+				key,
+				std::make_shared<Session>(
+					scheme, host, port, keepAlive, config.getSSLContext(), config.getProxyConfig(), *httpClientSessionFactory))
+			->second));
 }
 
 std::size_t PoolingConnectionFactory::SessionKey::Hash::operator()(const SessionKey& key) const
 {
-	return std::hash<const JXXRS::Configuration*>()(key.configuration) ^ std::hash<std::string>()(key.scheme) ^ std::hash<std::string>()(key.host) ^ std::hash<int>()(key.port);
+	return std::hash<const JXXRS::Configuration*>()(key.configuration) ^ std::hash<std::string>()(key.scheme) ^
+		   std::hash<std::string>()(key.host) ^ std::hash<int>()(key.port);
 }
 
 bool PoolingConnectionFactory::SessionKey::operator==(const SessionKey& other) const
@@ -63,8 +70,14 @@ bool PoolingConnectionFactory::SessionKey::operator==(const SessionKey& other) c
 }
 
 PoolingConnectionFactory::SessionKey::SessionKey(
-	const JXXRS::Configuration& configuration, const std::string& scheme, const std::string& host, std::uint16_t port) :
-		configuration(&configuration), scheme(scheme), host(host), port(port)
+	const JXXRS::Configuration& configuration,
+	const std::string& scheme,
+	const std::string& host,
+	std::uint16_t port) :
+	configuration(&configuration),
+	scheme(scheme),
+	host(host),
+	port(port)
 {
 }
 

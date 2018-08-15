@@ -17,7 +17,7 @@ namespace OS { namespace Keystone { namespace V3 { namespace Model {
 struct Scope : public JXXON::Serializable
 {
 	Scope();
-	Scope(const JXXON::Json &json);
+	Scope(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<Domain> domain;

@@ -13,13 +13,11 @@ EchoRequest::EchoRequest()
 {
 }
 
-EchoRequest::EchoRequest(const std::string& property) :
-		property(property)
+EchoRequest::EchoRequest(const std::string& property) : property(property)
 {
 }
 
-EchoRequest::EchoRequest(const JXXON::Json &json) :
-		property(json.get<decltype(property)>("property"))
+EchoRequest::EchoRequest(const JXXON::Json& json) : property(json.get<decltype(property)>("property"))
 {
 }
 

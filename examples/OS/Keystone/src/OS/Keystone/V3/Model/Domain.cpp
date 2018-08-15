@@ -13,9 +13,7 @@ Domain::Domain()
 {
 }
 
-Domain::Domain(const JXXON::Json &json) :
-		id(json.get<decltype(id)>("id")),
-		name(json.get<decltype(name)>("name"))
+Domain::Domain(const JXXON::Json& json) : id(json.get<decltype(id)>("id")), name(json.get<decltype(name)>("name"))
 {
 }
 

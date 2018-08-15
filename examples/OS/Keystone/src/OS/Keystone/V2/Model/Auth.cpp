@@ -13,11 +13,11 @@ Auth::Auth()
 {
 }
 
-Auth::Auth(const JXXON::Json &json) :
-		tenantName(json.get<decltype(tenantName)>("tenantName")),
-		tenantId(json.get<decltype(tenantId)>("tenantId")),
-		passwordCredentials(json.get<decltype(passwordCredentials)>("passwordCredentials")),
-		token(json.get<decltype(token)>("token"))
+Auth::Auth(const JXXON::Json& json) :
+	tenantName(json.get<decltype(tenantName)>("tenantName")),
+	tenantId(json.get<decltype(tenantId)>("tenantId")),
+	passwordCredentials(json.get<decltype(passwordCredentials)>("passwordCredentials")),
+	token(json.get<decltype(token)>("token"))
 {
 }
 

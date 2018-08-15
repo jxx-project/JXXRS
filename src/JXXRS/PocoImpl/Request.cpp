@@ -10,7 +10,7 @@
 namespace JXXRS { namespace PocoImpl {
 
 Request::Request(const std::string& httpMethod, const std::string& uri, const std::string& httpVersion) :
-		httpRequest(httpMethod, uri, httpVersion)
+	httpRequest(httpMethod, uri, httpVersion)
 {
 }
 

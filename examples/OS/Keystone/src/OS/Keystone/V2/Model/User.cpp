@@ -13,12 +13,12 @@ User::User()
 {
 }
 
-User::User(const JXXON::Json &json):
-		id(json.get<decltype(id)>("id")),
-		username(json.get<decltype(username)>("username")),
-		name(json.get<decltype(name)>("name")),
-		roles(json.get<decltype(roles)>("roles")),
-		rolesLinks(json.get<decltype(rolesLinks)>("roles_links"))
+User::User(const JXXON::Json& json) :
+	id(json.get<decltype(id)>("id")),
+	username(json.get<decltype(username)>("username")),
+	name(json.get<decltype(name)>("name")),
+	roles(json.get<decltype(roles)>("roles")),
+	rolesLinks(json.get<decltype(rolesLinks)>("roles_links"))
 {
 }
 

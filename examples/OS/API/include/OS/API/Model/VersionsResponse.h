@@ -14,16 +14,18 @@
 
 namespace OS { namespace API { namespace Model {
 
-struct VersionsResponse : public JXXON::Serializable {
+struct VersionsResponse : public JXXON::Serializable
+{
 	VersionsResponse();
-	VersionsResponse(const JXXON::Json &json);
+	VersionsResponse(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::shared_ptr<JXXON::List<Version>> versions;
 
 private:
-	struct Versions {
-		Versions(const JXXON::Json &json);
+	struct Versions
+	{
+		Versions(const JXXON::Json& json);
 		std::shared_ptr<JXXON::List<Version>> values;
 	};
 };

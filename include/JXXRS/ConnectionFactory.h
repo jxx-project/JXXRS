@@ -22,11 +22,8 @@ public:
 	{
 	}
 
-	virtual std::unique_ptr<Connection> get(
-		const Configuration& configuration,
-		const std::string& scheme,
-		const std::string& host,
-		std::uint16_t port) = 0;
+	virtual std::unique_ptr<Connection>
+	get(const Configuration& configuration, const std::string& scheme, const std::string& host, std::uint16_t port) = 0;
 };
 
 } // namespace JXXRS

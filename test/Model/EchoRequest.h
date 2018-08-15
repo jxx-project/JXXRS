@@ -17,7 +17,7 @@ struct EchoRequest : public JXXON::Serializable
 {
 	EchoRequest();
 	EchoRequest(const std::string& property);
-	EchoRequest(const JXXON::Json &json);
+	EchoRequest(const JXXON::Json& json);
 	virtual JXXON::Json toJson() const override;
 
 	std::string property;

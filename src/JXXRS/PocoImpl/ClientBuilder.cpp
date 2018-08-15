@@ -15,18 +15,18 @@
 namespace JXXRS { namespace PocoImpl {
 
 ClientBuilder::ClientBuilder() :
-		connectionFactory(nullptr),
-		httpProxy(""),
-		httpNoProxy(""),
-		tlsUsage(Poco::Net::Context::Usage::TLSV1_2_CLIENT_USE),
-		tlsCiphers("ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH"),
-		tlsVerify(true),
-		tlsVerificationDepth(9),
-		tlsTrustStore(""),
-		tlsUseDefaultCAs(false),
-		tlsKeyStore(""),
-		tlsKeyPassword(""),
-		configuration(nullptr)
+	connectionFactory(nullptr),
+	httpProxy(""),
+	httpNoProxy(""),
+	tlsUsage(Poco::Net::Context::Usage::TLSV1_2_CLIENT_USE),
+	tlsCiphers("ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH"),
+	tlsVerify(true),
+	tlsVerificationDepth(9),
+	tlsTrustStore(""),
+	tlsUseDefaultCAs(false),
+	tlsKeyStore(""),
+	tlsKeyPassword(""),
+	configuration(nullptr)
 {
 }
 
@@ -121,16 +121,13 @@ std::shared_ptr<JXXRS::Client> ClientBuilder::build()
 
 Poco::Net::Context::Ptr ClientBuilder::createSSLContext() const
 {
-	Poco::Net::Context::Ptr context(
-		new Poco::Net::Context(
-			tlsUsage,
-			tlsTrustStore,
-			(tlsVerify ?
-			 Poco::Net::Context::VerificationMode::VERIFY_RELAXED :
-			 Poco::Net::Context::VerificationMode::VERIFY_NONE),
-			tlsVerificationDepth,
-			tlsUseDefaultCAs,
-			tlsCiphers));
+	Poco::Net::Context::Ptr context(new Poco::Net::Context(
+		tlsUsage,
+		tlsTrustStore,
+		(tlsVerify ? Poco::Net::Context::VerificationMode::VERIFY_RELAXED : Poco::Net::Context::VerificationMode::VERIFY_NONE),
+		tlsVerificationDepth,
+		tlsUseDefaultCAs,
+		tlsCiphers));
 	if (!tlsKeyStore.empty()) {
 		Poco::Crypto::PKCS12Container pkcs12Container(tlsKeyStore, tlsKeyPassword);
 		context->useCertificate(pkcs12Container.getX509Certificate());

@@ -9,8 +9,7 @@
 
 namespace JXXRS {
 
-TextEntity::TextEntity(std::string&& text, const std::string& mediaType) :
-		text(std::move(text)), mediaType(mediaType)
+TextEntity::TextEntity(std::string&& text, const std::string& mediaType) : text(std::move(text)), mediaType(mediaType)
 {
 }
 

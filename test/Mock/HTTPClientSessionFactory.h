@@ -20,11 +20,8 @@ public:
 	HTTPClientSessionFactory();
 	~HTTPClientSessionFactory();
 
-	virtual std::unique_ptr<Poco::Net::HTTPClientSession> get(
-		const std::string& scheme,
-		const std::string& host,
-		std::uint16_t port,
-		const Poco::Net::Context::Ptr sslContext) const;
+	virtual std::unique_ptr<Poco::Net::HTTPClientSession>
+	get(const std::string& scheme, const std::string& host, std::uint16_t port, const Poco::Net::Context::Ptr sslContext) const;
 };
 
 } // namespace Mock

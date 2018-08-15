@@ -16,7 +16,7 @@ public:
 	class Object
 	{
 	public:
-		virtual ~Object ()
+		virtual ~Object()
 		{
 		}
 	};

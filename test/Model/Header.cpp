@@ -13,15 +13,11 @@ Header::Header()
 {
 }
 
-Header::Header(const std::string& name, const std::string& value) :
-		name(name),
-		value(value)
+Header::Header(const std::string& name, const std::string& value) : name(name), value(value)
 {
 }
 
-Header::Header(const JXXON::Json &json) :
-		name(json.get<decltype(name)>("name")),
-		value(json.get<decltype(value)>("value"))
+Header::Header(const JXXON::Json& json) : name(json.get<decltype(name)>("name")), value(json.get<decltype(value)>("value"))
 {
 }
 

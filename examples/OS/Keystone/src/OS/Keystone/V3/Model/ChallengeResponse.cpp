@@ -13,9 +13,9 @@ ChallengeResponse::ChallengeResponse()
 {
 }
 
-ChallengeResponse::ChallengeResponse(const JXXON::Json &json) :
-		challenge(json.get<decltype(challenge)>("challenge")),
-		sessionId(json.get<decltype(sessionId)>("session_id"))
+ChallengeResponse::ChallengeResponse(const JXXON::Json& json) :
+	challenge(json.get<decltype(challenge)>("challenge")),
+	sessionId(json.get<decltype(sessionId)>("session_id"))
 {
 }
 

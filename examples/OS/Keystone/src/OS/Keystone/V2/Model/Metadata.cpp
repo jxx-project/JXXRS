@@ -13,9 +13,9 @@ Keystone::V2::Model::Metadata::Metadata()
 {
 }
 
-Metadata::Metadata(const JXXON::Json &json) :
-		isAdmin(json.get<decltype(isAdmin)>("is_admin")),
-		roles(json.get<decltype(roles)>("roles"))
+Metadata::Metadata(const JXXON::Json& json) :
+	isAdmin(json.get<decltype(isAdmin)>("is_admin")),
+	roles(json.get<decltype(roles)>("roles"))
 {
 }
 
